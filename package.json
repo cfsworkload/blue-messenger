@@ -1,13 +1,19 @@
 {
-	"name": "NodejsStarterApp",
+	"name": "Mosca-Cloudant",
 	"version": "0.0.1",
-	"description": "A sample nodejs app for Bluemix",
+	"description": "A simple nodejs app for Bluemix",
 	"scripts": {
 		"start": "node app.js"
 	},
 	"dependencies": {
 		"express": "4.12.x",
-		"cfenv": "1.0.x"
+		"ejs": "*",
+		"morgan": "*",
+		"cfenv": "1.0.x",
+		"mosca": "0.29.0",
+        "ascoltatori": "0.21.0",
+        "fs": "*",
+        "cloudant": "*"
 	},
 	"repository": {}
 }

@@ -2,6 +2,26 @@
  * This file provides css styles.
  */
 
+#header {
+    color: white;
+    background-color: #006dcc;
+    padding: 5px;
+    font-weight: bold;
+    margin-top: 0px;
+    text-align: center;
+}
+
+#db {
+	font-family: Verdana;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	color: #006dcc;
+}
+
+
+
 body,html {
 	background-color: #3b4b54; width : 100%;
 	height: 100%;
