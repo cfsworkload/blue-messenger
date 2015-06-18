@@ -11,40 +11,44 @@
 	<meta charset="utf-8"/>
 </head>
 <body align="center">
-    <div class="container">
-        <div class="pull-left">
-            <h4>IBM Guided Experience</h4>
-        </div>
-        <div class="pull-right">
-            <h4>Made with IBM Bluemix</h4>
-        </div>
+	<div class="text-center">
+	    <div class="container">
+	        <div class="pull-left">
+	            <h4>IBM Guided Experience</h4>
+	        </div>
+	        <div class="pull-right">
+	            <h4>Made with IBM Bluemix</h4>
+	        </div>
+	    </div>
+	    <div class="container">
+	    	<h1 id="header">Hello Websocket</h1>
+	    </div>
+	    
+	    <div class="container" align="right">
+	        <br/>
+	        <textarea class="form-control" rows="6" id="message"></textarea>
+	        <label for="message">Message</label>
+	    </div>
+	    
+	    <div class="container">
+	        <button id="send" class="btn btn-lg">Send Message</button>
+	        <h3>Generate load at up to <span id = "messageFrequency">1000</span> messages per second!</h3>
+	        <div class="btn-group">
+	            <button id="start" class="btn btn-success btn-md">Start</button>
+	            <button id="stop" class="btn btn-danger btn-md" disabled>Stop</button>
+	        </div>
+	        <br/>
+	        <label for="sel1">Select messaging rate:</label><br/>
+	        <div class="col-xs-2 col-xs-offset-5">
+	            <select class="form-control" id="rates">
+	                <option>10</option>
+	                <option>100</option>
+	                <option selected>1000</option>
+	            </select>
+	        </div>
+	        <br/><br/>
+	        <h4><a href='#'>About</a></h4>
+	    </div>
     </div>
-    <h1 id="header">Hello Websocket</h1>
-    <div class="container" align="right">
-        <br/>
-        <textarea class="form-control" rows="6" id="message"></textarea>
-        <label for="message">Message</label>
-    </div>
-    
-    <div class="container">
-        <button id="send" class="btn btn-lg">Send Message</button>
-        <h3>Generate load at up to <span id = "messageFrequency">1000</span> messages per second!</h3>
-        <div class="btn-group">
-            <button id="start" class="btn btn-success btn-md">Start</button>
-            <button id="stop" class="btn btn-danger btn-md" disabled>Stop</button>
-        </div>
-        <br/>
-        <label for="sel1">Select messaging rate:</label><br/>
-        <div class="col-xs-2 col-xs-offset-5">
-            <select class="form-control" id="rates">
-                <option>10</option>
-                <option>100</option>
-                <option selected>1000</option>
-            </select>
-        </div>
-        <br/><br/>
-        <h4><a href='#'>About</a></h4>
-    </div>
-    
 </body>
 </html>
