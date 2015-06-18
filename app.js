@@ -12,6 +12,7 @@ var path = require('path');
 var morgan = require('morgan');
 var mosca = require('mosca');
 var fs = require('fs');
+var https = require ('https');
 
 
 var db;
@@ -66,16 +67,36 @@ var app = express();
 
 app.set('port', port);
 app.set('view engine', 'ejs');
-app.use(morgan('dev'));
+
+
+// Enable reverse proxy support in Express. This causes the
+// the "X-Forwarded-Proto" header field to be trusted so its
+// value can be used to determine the protocol. See 
+// http://expressjs.com/api#app-settings for more details.
+app.enable('trust proxy');
+
+// Add a handler to inspect the req.secure flag (see 
+// http://expressjs.com/api#req.secure). This allows us 
+// to know whether the request was via http or https.
+app.use (function (req, res, next) {
+	if (req.secure) {
+		// request was via https
+		res.redirect('http://' + req.headers.host + req.url);
+	} else {
+		// request was via http
+		next();
+	}
+});
 
 // serve the files out of ./public as our main files
 app.use(express.static(__dirname + '/public'));
+
 
 /**
  * This is our home route.  This gets called when we visit our
  * base address http://MYSERVERNAME.mybluemix.net/
 **/
-	var userCount = 0;
+var userCount = 0;
 app.get('/', function(req, res) {
     	userCount = userCount + 1;
         res.render('index', {userCount: userCount}); 
@@ -122,7 +143,6 @@ mqttServe.on('published', function(packet, client){
 //  console.log("server starting on " + appEnv.url);
 //});
 
-
 var httpServer = http.createServer(app);
 mqttServe.attachHttpServer(httpServer);
 
@@ -131,3 +151,4 @@ mqttServe.attachHttpServer(httpServer);
 httpServer.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+

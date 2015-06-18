@@ -21,7 +21,7 @@ $(document).ready(function(){
     
     //connect options
     var options = {
-         timeout: 3,
+         timeout: 5,
          //Gets Called if the connection has sucessfully been established
          onSuccess: function () {
              buttonsConnected();
@@ -34,7 +34,7 @@ $(document).ready(function(){
     };//end options
     
     //generate client
-    var client = new Messaging.Client("mosca-redis-ank.mybluemix.net", 80, "client");
+    var client = new Messaging.Client(document.URL.substring(7), 80, "client");
     
     client.onConnectionLost = function (responseObject) {
         //Depending on your scenario you could implement a reconnect logic here
@@ -49,7 +49,7 @@ $(document).ready(function(){
     var publish = function () {
          //Send your message (also possible to serialize it as JSON or protobuf or just use a string, no limitations)
        var message = new Messaging.Message($('#message').val());
-       message.destinationName = "topic"
+       message.destinationName = "topic";
        message.qos = 0;
        client.send(message);
         $('#message').val("");
