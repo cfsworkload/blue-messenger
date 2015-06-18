@@ -34,7 +34,7 @@ $(document).ready(function(){
     };//end options
     
     //generate client
-    var client = new Messaging.Client(document.URL.substring(7), 80, "client_" + jQuery.now().substring(7, 13) + parseInt(Math.random() * 100, 10) );
+    var client = new Messaging.Client(document.URL.substring(7), 80, "client_" + jQuery.now().toString().substring(7, 13) + parseInt(Math.random() * 100, 10) );
     
     client.onConnectionLost = function (responseObject) {
         //Depending on your scenario you could implement a reconnect logic here
