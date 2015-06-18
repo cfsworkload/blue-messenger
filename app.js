@@ -76,7 +76,6 @@ app.use(express.static(__dirname + '/public'));
  * base address http://MYSERVERNAME.mybluemix.net/
 **/
 	var userCount = 0;
-    var mqttPosts = 0;
 app.get('/', function(req, res) {
     	userCount = userCount + 1;
         res.render('index', {userCount: userCount}); 
@@ -93,6 +92,7 @@ mqttServe.on('published', function(packet, client){
 	console.log('Published', packet);
 	console.log('Topic', packet.topic);
 	console.log('Message', packet.payload);
+	console.log('Client', client);
 	console.log('Message.toString', packet.payload.toString("utf8"));
 	console.log('### Inside serve.On ###');
 
@@ -103,7 +103,7 @@ mqttServe.on('published', function(packet, client){
 	    console.log("The file was saved!");
 	}); 
 	
-	db.insert({"Topic": packet.topic, "Client": client.id, "Message": packet.payload.toString("utf8")}, function(err, body) {
+	db.insert({"Topic": packet.topic, "Message": packet.payload.toString("utf8")}, function(err, body) {
  		if (!err)
     		console.log(body);
 		});
