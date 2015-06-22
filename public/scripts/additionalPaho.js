@@ -65,9 +65,10 @@ $(document).ready(function(){
     
     var spamming = false;
     
+    
     var spam = function(){
         if(spamming){
-            $('#message').val("*");
+            $('#message').val("Mass message");
             publish();
             setTimeout(spam, 1000/rate - 1);
         }
@@ -78,6 +79,8 @@ $(document).ready(function(){
         $("#stop").prop("disabled", !$("#stop").prop("disabled"));
         $("#send").prop("disabled", !$("#send").prop("disabled"));
     };
+    
+
     
     $('#start').click(function(){
         spamming = true;
