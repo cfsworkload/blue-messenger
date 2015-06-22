@@ -48,7 +48,7 @@ https://www.ng.bluemix.net/docs/#services/Cloudant/index.html#Cloudant
 
 ## Fork project to personal Jazz Repo space 
 
-* From https://hub.jazz.net/project/wprichar/Mosca_redis 1/ select "Fork Project" in top right of page
+* From https://hub.jazz.net/git/ank/Mosca-Cloudant/ select "Fork Project" in top right of page
 
 ![Example](images/fork.jpg)
 
@@ -76,6 +76,9 @@ https://hub.jazz.net/docs
 * In your "EDIT CODE" window click the drop down and select the pencil symbol to edit launch configuration
 
 ![Example](images/editlaunch.jpg)
+
+* In the "Edit Launch Configuration" window
+	* 
 
 ## Add Services and Monitor from Bluemix Dashboard
 
