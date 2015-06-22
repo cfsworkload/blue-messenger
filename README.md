@@ -78,7 +78,22 @@ https://hub.jazz.net/docs
 ![Example](images/editlaunch.jpg)
 
 * In the "Edit Launch Configuration" window
-	* 
+	* In the "Launch Config Name*:" field give a Config Name 
+	* In the "Target*:" field select your region
+	* In the "Organization*:" field select your desired org
+	* In the "Space*:" field select your Bluemix Space you want to deploy to
+	* In the "Application Name" field put "Mosca-Cloudant"
+	* In the "Host" field put "Mosca-Cloudant"
+	* In the "Domain" field leave default at "mybluemix.net"
+	* Click "Save"
+
+![Example](images/launchconfig.jpg)]
+
+* In your "EDIT CODE" window select the "Play" button to deploy your application to bluemix
+
+![Example](images/play.jpg)
+
+
 
 ## Add Services and Monitor from Bluemix Dashboard
 
