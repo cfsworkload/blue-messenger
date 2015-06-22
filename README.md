@@ -1,17 +1,80 @@
-This README.md file is displayed on your project page. You should edit this 
-file to describe your project, including instructions for building and 
-running the project, pointers to the license under which you are making the 
-project available, and anything else you think would be useful for others to
-know.
+# Workload - Scalable Web App
 
-We have created an empty license.txt file for you. Well, actually, it says,
-"<Replace this text with the license you've chosen for your project.>" We 
-recommend you edit this and include text for license terms under which you're
-making your code available. A good resource for open source licenses is the 
-[Open Source Initiative](http://opensource.org/).
+Scalable Web Application example implemented in Cloud Foundry 
 
-Be sure to update your project's profile with a short description and 
-eye-catching graphic.
 
-Finally, consider defining some sprints and work items in Track & Plan to give 
-interested developers a sense of your cadence and upcoming enhancements.
+## Big Picture
+
+We will be deploying an messaging web application that will utilizes and demonstrates Bluemix services "Monitoring and Analytics",
+"Autoscale", and "Cloudant NoSQL DB"
+
+Workflow - 
+
+![Workflow](images/WebHostingAppWorkflow.jpg)
+
+## Introduction
+
+	   A messaging web application has been created that we will depoly it into our personal space
+	after you have signed up for the Bluemix and their DevOps servies . We will attach the the
+	"Monitoring and Analytics", "Autoscale", and "Cloudant NoSQL DB" servcies and provide instruction
+	into understanding how the applications works and how to monitor the attached services.  
+
+## Sign up for / Log into Bluemix and DevOPs
+
+	//TODO - Making a guide for signing up for bluemix
+
+
+## Create Cloudant NoSQL DB through Bluemix Dashboard
+ 
+
+* Log into your Dashboard at https://console.ng.bluemix.net/
+* From main select "ADD A SERVICE OR API"
+* In the top search bar type "cloudant" and select "Cloudant NoSQL DB"
+
+![Example](images/cloudant.jpg)
+
+* In the "Space" select your desired space in your Bluemix account
+* In "App:" select "Leave unbound"
+* In "Service name:" put "Cloudant NoSQL DB-xh"
+* In your "Selected Plan:" leave it as default "Shared"
+* Select "CREATE"
+
+![Example](images/AddService.jpg)
+
+	You have successfully deployed a standalone instance of Cloudant NoSQL DB into your personal Bluemix space. 
+For more information on Cloudant please see the docs at - 
+
+https://www.ng.bluemix.net/docs/#services/Cloudant/index.html#Cloudant
+
+## Fork project to personal Jazz Repo space 
+
+* From https://hub.jazz.net/project/wprichar/Mosca_redis 1/ select "Fork Project" in top right of page
+
+![Example](images/fork.jpg)
+
+In the Menu that pops up 
+
+* Set desired name of project 
+* Make sure URL specified is proper path to your Bluemix space 
+* Decide if you want to this repository to be public or private by checking box at "Make it private (not public)"
+* Decide if you want to Add features for Scrum development
+* Make sure the box is checked for "Make this a Bluemix Project"
+* Select your desired Region, Organization, and Space and select "Create"
+
+![Example](images/create.jpg)
+
+	You have successfully forked this application code to your personalJazz Hub space.
+To find more about Bluemix's DevOPs features reference the DOCs at - 
+https://hub.jazz.net/docs
+
+## Deploy to Bluemix through Jazz Hub
+
+* Navigate to your project you forked to in your Jazz Hub 
+
+//TODO show steps for doing this
+
+* 
+
+
+
+
