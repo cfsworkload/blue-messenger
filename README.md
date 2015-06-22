@@ -82,7 +82,7 @@ https://hub.jazz.net/docs
 
 ## Add Services and Monitor from Bluemix Dashboard
 
-* 
+* Log into your Dashboard at https://console.ng.bluemix.net/
 
 
 
