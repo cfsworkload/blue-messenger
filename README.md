@@ -69,12 +69,17 @@ https://hub.jazz.net/docs
 
 ## Deploy to Bluemix through Jazz Hub
 
-* Navigate to your project you forked to in your Jazz Hub 
+* From the project page in your Jazz Hub at ttps://hub.jazz.net/project/**NameOfProject** select "EDIT CODE" at the top right
 
-//TODO show steps for doing this
+![Example](images/editcode.jpg)
+
+* In your "EDIT CODE" window click the drop down and select the pencil symbol to edit launch configuration
+
+![Example](images/editlaunch.jpg)
+
+## Add Services and Monitor from Bluemix Dashboard
 
 * 
-
 
 
 
