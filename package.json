@@ -10,7 +10,7 @@
 		"ejs": "*",
 		"morgan": "*",
 		"cfenv": "1.0.x",
-		"mosca": "0.30.2",
+		"mosca": "0.30.x",
         "ascoltatori": "0.21.0",
         "fs": "*",
         "cloudant": "*"
