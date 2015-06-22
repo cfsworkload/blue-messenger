@@ -14,10 +14,10 @@ Workflow -
 
 ## Introduction
 
-	   A messaging web application has been created that we will depoly it into our personal space
-	after you have signed up for the Bluemix and their DevOps servies . We will attach the the
-	"Monitoring and Analytics", "Autoscale", and "Cloudant NoSQL DB" servcies and provide instruction
-	into understanding how the applications works and how to monitor the attached services.  
+A messaging web application has been created that we will depoly it into our personal space
+after you have signed up for the Bluemix and their DevOps servies . We will attach the the
+"Monitoring and Analytics", "Autoscale", and "Cloudant NoSQL DB" servcies and provide instruction
+into understanding how the applications works and how to monitor the attached services.  
 
 ## Sign up for / Log into Bluemix and DevOPs
 
