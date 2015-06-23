@@ -20,7 +20,7 @@ $(document).ready(function(){
         $('#send').prop('disabled', false);
         $('#start').prop('disabled', false);
         
-        $('#send').css("background-color","#126D7A");
+        $('#send').css("background-color","#2BBEAA");
         $('#send').text("Send Message");
     };
     

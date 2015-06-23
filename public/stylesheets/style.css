@@ -1,21 +1,11 @@
 body{
     background-color: #222C36;
     color: white;
+    padding: 15px;
 }
 
-.container {
-    background-color: #3B4B54; 
-}
-
-h1 {
-    background-color: #126D7A;
-    padding: 5px;
-    font-weight: bold;
-    margin-top: 0px;
-}
-
-#send {
-    background-color: #126D7A;
+button{
+    background-color: #2BBEAA;
 }
 
 span{
@@ -26,6 +16,10 @@ a{
     color: #2BBEAA;
 }
 
-textarea {
+textarea{
     resize: none;
+}
+
+.col-xs-2{
+    padding-left: 0;
 }
