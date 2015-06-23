@@ -26,16 +26,17 @@ into understanding how the applications works and how to monitor the attached se
 
 ## Create Cloudant NoSQL DB through Bluemix Dashboard
  
-
+	intro
 * Log into your Dashboard at https://console.ng.bluemix.net/
-* From main select "ADD A SERVICE OR API"
+* From main select "ADD A SERVICE OR API" [possibly mention you need to scroll down]
 * In the top search bar type "cloudant" and select "Cloudant NoSQL DB"
 
 ![Example](images/cloudant.jpg)
 
+	explanation about filling out fields
 * In the "Space" select your desired space in your Bluemix account
 * In "App:" select "Leave unbound"
-* In "Service name:" put "Cloudant NoSQL DB-xh"
+* In "Service name:" put "Cloudant NoSQL DB-xh" [explain changing to "pc" or to remember name for manifest]
 * In your "Selected Plan:" leave it as default "Shared"
 * Select "CREATE"
 
@@ -47,19 +48,18 @@ For more information on Cloudant please see the docs at -
 https://www.ng.bluemix.net/docs/#services/Cloudant/index.html#Cloudant
 
 ## Fork project to personal Jazz Repo space 
-
+	[intro]
 * From https://hub.jazz.net/git/ank/Mosca-Cloudant/ select "Fork Project" in top right of page
 
 ![Example](images/fork.jpg)
 
 In the Menu that pops up 
 
-* Set desired name of project 
-* Make sure URL specified is proper path to your Bluemix space 
-* Decide if you want to this repository to be public or private by checking box at "Make it private (not public)"
-* Decide if you want to Add features for Scrum development
-* Make sure the box is checked for "Make this a Bluemix Project"
-* Select your desired Region, Organization, and Space and select "Create"
+* Set desired name of project [tell them to call it MQTT-Web-App]
+* Make sure URL specified is the proper path to your Bluemix space [???]
+* Decide if you want to this repository to be public or private by checking box at "Make it private (not public)" [Check "Make it private" if you want the repo to be private, otherwise leave unchecked]
+* Keep "Make this a Bluemix Project" checked
+* Select your desired Region, Organization, and Space and select "Create". The space needs to be in the same where you assigned your Cloudant database service in the last section.
 
 ![Example](images/create.jpg)
 
