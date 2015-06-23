@@ -14,10 +14,10 @@ Workflow -
 
 ## Introduction
 
-	   A messaging web application has been created that we will depoly it into our personal space
-	after you have signed up for the Bluemix and their DevOps servies . We will attach the the
-	"Monitoring and Analytics", "Autoscale", and "Cloudant NoSQL DB" servcies and provide instruction
-	into understanding how the applications works and how to monitor the attached services.  
+A messaging web application has been created that we will depoly it into our personal space
+after you have signed up for the Bluemix and their DevOps servies . We will attach the the
+"Monitoring and Analytics", "Autoscale", and "Cloudant NoSQL DB" servcies and provide instruction
+into understanding how the applications works and how to monitor the attached services.  
 
 ## Sign up for / Log into Bluemix and DevOPs
 
@@ -26,16 +26,17 @@ Workflow -
 
 ## Create Cloudant NoSQL DB through Bluemix Dashboard
  
-
+	intro
 * Log into your Dashboard at https://console.ng.bluemix.net/
-* From main select "ADD A SERVICE OR API"
+* From main select "ADD A SERVICE OR API" [possibly mention you need to scroll down]
 * In the top search bar type "cloudant" and select "Cloudant NoSQL DB"
 
 ![Example](images/cloudant.jpg)
 
+	explanation about filling out fields
 * In the "Space" select your desired space in your Bluemix account
 * In "App:" select "Leave unbound"
-* In "Service name:" put "Cloudant NoSQL DB-xh"
+* In "Service name:" put "Cloudant NoSQL DB-xh" [explain changing to "pc" or to remember name for manifest]
 * In your "Selected Plan:" leave it as default "Shared"
 * Select "CREATE"
 
@@ -47,19 +48,18 @@ For more information on Cloudant please see the docs at -
 https://www.ng.bluemix.net/docs/#services/Cloudant/index.html#Cloudant
 
 ## Fork project to personal Jazz Repo space 
-
+	[intro]
 * From https://hub.jazz.net/git/ank/Mosca-Cloudant/ select "Fork Project" in top right of page
 
 ![Example](images/fork.jpg)
 
 In the Menu that pops up 
 
-* Set desired name of project 
-* Make sure URL specified is proper path to your Bluemix space 
-* Decide if you want to this repository to be public or private by checking box at "Make it private (not public)"
-* Decide if you want to Add features for Scrum development
-* Make sure the box is checked for "Make this a Bluemix Project"
-* Select your desired Region, Organization, and Space and select "Create"
+* Set desired name of project [tell them to call it MQTT-Web-App]
+* Make sure URL specified is the proper path to your Bluemix space [???]
+* Decide if you want to this repository to be public or private by checking box at "Make it private (not public)" [Check "Make it private" if you want the repo to be private, otherwise leave unchecked]
+* Keep "Make this a Bluemix Project" checked
+* Select your desired Region, Organization, and Space and select "Create". The space needs to be in the same where you assigned your Cloudant database service in the last section.
 
 ![Example](images/create.jpg)
 
@@ -73,16 +73,70 @@ https://hub.jazz.net/docs
 
 ![Example](images/editcode.jpg)
 
+* In your "EDIT CODE" window double click the manifest.yml which will display the file
+* In the "host:" field you will see "mosca-cloudant" ... we need to append to the end of this and set it to be unique because the host name
+will be used as your DNS name and is publicly accessible .. I this case I will add the user name test749 to the end of the "mosca-cloudant"
+
+![Example](images/manifest.jpg)
+
+
 * In your "EDIT CODE" window click the drop down and select the pencil symbol to edit launch configuration
+
+
 
 ![Example](images/editlaunch.jpg)
 
 * In the "Edit Launch Configuration" window
-	* 
+	* In the "Launch Config Name*:" field give a Config Name 
+	* In the "Target*:" field select your region
+	* In the "Organization*:" field select your desired org
+	* In the "Space*:" field select your Bluemix Space you want to deploy to
+	* In the "Application Name" field put the host name you specified in your manifest.yml
+	* In the "Host" field put "Mosca-Cloudant"
+	* In the "Domain" field leave default at "mybluemix.net"
+	* Click "Save"
+
+![Example](images/launchconfig.jpg)]
+
+* In your "EDIT CODE" window select the "Play" button to deploy your application to bluemix
+
+![Example](images/play.jpg)
+
+
 
 ## Add Services and Monitor from Bluemix Dashboard
 
 * Log into your Dashboard at https://console.ng.bluemix.net/
+* From main select your application you just created ... default is "Mosca-Cloudant"
 
+![Example](images/ourapplication.jpg)
+
+* In the application windows select "ADD A SERVICE OR API"
+
+![Example](images/AddService-1.jpg)
+
+	This will bring up the Bluemix services catalog
+	
+* In the top search bar type "Monitoring and Analytics" and select "Monitoring and Analytics"
+
+![Example](images/monitoring.jpg)
+
+* In "Space:" select your space our newly created application resides
+* In "App:" select your app 
+* In "Selected Plan:" select your desired plan
+* Select "CREATE" and then select "RESTAGE" when it pops up ( it might do this for you automatically )
+
+
+* Go back to your application page and select "ADD A SERVICE OR API" again
+* In the top search bar type "Auto-Scaling" and select "Auto-Scaling"
+
+![Example](images/autoscale.jpg)
+
+* In "Space:" select your space our newly created application resides
+* In "App:" select your app 
+* In "Selected Plan:" select your desired plan
+* Select "CREATE" and then select "RESTAGE" when it pops up ( it might do this for you automatically )
+
+	You have now successfully binded "Monitoring and Analytics" and "Auto-Scaling" services to your web application
 
 

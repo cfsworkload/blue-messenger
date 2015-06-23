@@ -1,6 +1,6 @@
 applications:
 - disk_quota: 1024M
-  host: mqtt-ank
+  host: mosca-cloudant
   name: Mosca-Cloudant
   path: .
   domain: mybluemix.net
@@ -8,4 +8,3 @@ applications:
   memory: 512M
   services:
    - Cloudant NoSQL DB-pc
-   - Auto-Scaling-ri
