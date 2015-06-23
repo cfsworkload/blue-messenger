@@ -74,7 +74,7 @@ https://hub.jazz.net/docs
 ![Example](images/editcode.jpg)
 
 * In your "EDIT CODE" window double click the manifest.yml which will display the file
-* In the "host:" field you will see "mosca-cloudant" ... we need to append to the end of it to be unique because the host name
+* In the "host:" field you will see "mosca-cloudant" ... we need to append to the end of this and set it to be unique because the host name
 will be used as your DNS name and is publicly accessible .. I this case I will add the user name test749 to the end of the "mosca-cloudant"
 
 ![Example](images/manifest.jpg)
