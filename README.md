@@ -73,7 +73,16 @@ https://hub.jazz.net/docs
 
 ![Example](images/editcode.jpg)
 
+* In your "EDIT CODE" window double click the manifest.yml which will display the file
+* In the "host:" field you will see "mosca-cloudant" ... we need to append to the end of it to be unique because the host name
+will be used as your DNS name and is publicly accessible .. I this case I will add the user name test749 to the end of the "mosca-cloudant"
+
+![Example](images/manifest.jpg)
+
+
 * In your "EDIT CODE" window click the drop down and select the pencil symbol to edit launch configuration
+
+
 
 ![Example](images/editlaunch.jpg)
 
@@ -82,7 +91,7 @@ https://hub.jazz.net/docs
 	* In the "Target*:" field select your region
 	* In the "Organization*:" field select your desired org
 	* In the "Space*:" field select your Bluemix Space you want to deploy to
-	* In the "Application Name" field put "Mosca-Cloudant"
+	* In the "Application Name" field put the host name you specified in your manifest.yml
 	* In the "Host" field put "Mosca-Cloudant"
 	* In the "Domain" field leave default at "mybluemix.net"
 	* Click "Save"
@@ -98,7 +107,16 @@ https://hub.jazz.net/docs
 ## Add Services and Monitor from Bluemix Dashboard
 
 * Log into your Dashboard at https://console.ng.bluemix.net/
-* From main select "ADD A SERVICE OR API"
+* From main select your application you just created ... default is "Mosca-Cloudant"
+
+![Example](images/ourapplication.jpg)
+
+* In the application windows select "ADD A SERVICE OR API"
+
+![Example](images/AddService-1.jpg)
+
+	This will bring up the Bluemix services catalog
+	
 * In the top search bar type "Monitoring and Analytics" and select "Monitoring and Analytics"
 
 ![Example](images/monitoring.jpg)
@@ -106,7 +124,10 @@ https://hub.jazz.net/docs
 * In "Space:" select your space our newly created application resides
 * In "App:" select your app 
 * In "Selected Plan:" select your desired plan
-* Go back to your dashboard and select "ADD A SERVICE OR API" again
+* Select "CREATE" and then select "RESTAGE" when it pops up ( it might do this for you automatically )
+
+
+* Go back to your application page and select "ADD A SERVICE OR API" again
 * In the top search bar type "Auto-Scaling" and select "Auto-Scaling"
 
 ![Example](images/autoscale.jpg)
@@ -114,6 +135,7 @@ https://hub.jazz.net/docs
 * In "Space:" select your space our newly created application resides
 * In "App:" select your app 
 * In "Selected Plan:" select your desired plan
+* Select "CREATE" and then select "RESTAGE" when it pops up ( it might do this for you automatically )
 
 	You have now successfully binded "Monitoring and Analytics" and "Auto-Scaling" services to your web application
 
