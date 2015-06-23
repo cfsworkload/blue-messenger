@@ -98,6 +98,23 @@ https://hub.jazz.net/docs
 ## Add Services and Monitor from Bluemix Dashboard
 
 * Log into your Dashboard at https://console.ng.bluemix.net/
+* From main select "ADD A SERVICE OR API"
+* In the top search bar type "Monitoring and Analytics" and select "Monitoring and Analytics"
 
+![Example](images/monitoring.jpg)
+
+* In "Space:" select your space our newly created application resides
+* In "App:" select your app 
+* In "Selected Plan:" select your desired plan
+* Go back to your dashboard and select "ADD A SERVICE OR API" again
+* In the top search bar type "Auto-Scaling" and select "Auto-Scaling"
+
+![Example](images/autoscale.jpg)
+
+* In "Space:" select your space our newly created application resides
+* In "App:" select your app 
+* In "Selected Plan:" select your desired plan
+
+	You have now successfully binded "Monitoring and Analytics" and "Auto-Scaling" services to your web application
 
 
