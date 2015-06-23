@@ -110,12 +110,10 @@ mqttServe.on('clientConnected', function(client) {
 });
 
 mqttServe.on('published', function(packet, client){
-	console.log('Published', packet);
 	console.log('Topic', packet.topic);
 	console.log('Message', packet.payload);
 	console.log('Client', client);
 	console.log('Message.toString', packet.payload.toString("utf8"));
-	console.log('### Inside serve.On ###');
 
 	fs.appendFile("../logs/mqtt.log", packet.topic + ": " + packet.payload.toString("utf8") + "\n", function(err) {
 	    if(err) {
