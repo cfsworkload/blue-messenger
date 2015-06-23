@@ -1,4 +1,11 @@
 $(document).ready(function(){
+	var spamming = false;
+    var connected = false;
+    var delay;
+    var duration;
+    var spamControl;
+    var messageCount = 0;
+	
     //the send button also acts as a connection signal
     var buttonsDisconnected = function(){
         $('#send').prop('disabled', true);
@@ -24,11 +31,17 @@ $(document).ready(function(){
          timeout: 3,
          //Gets Called if the connection has sucessfully been established
          onSuccess: function () {
-             buttonsConnected();
+             if (!spamming){
+                 buttonsConnected();
+             }
+             connected = true;
          },
          //Gets Called if the connection could not be established
-         onFailure: function (message) {
-             buttonsDisconnected();
+         onFailure: function () {
+             if (!spamming){
+                 buttonsDisconnected();
+             }
+             connected = false;
              client.connect(options);
          }
     };//end options
@@ -36,9 +49,12 @@ $(document).ready(function(){
     //generate client
     var client = new Messaging.Client(document.URL.substring(7), 80, "client_" + jQuery.now().toString().substring(7, 13) + parseInt(Math.random() * 100, 10) );
     
-    client.onConnectionLost = function (responseObject) {
+    client.onConnectionLost = function () {
         //Depending on your scenario you could implement a reconnect logic here
-        buttonsDisconnected();
+        if (!spamming){
+            buttonsDisconnected();
+        }
+        connected = false;
         client.connect(options);
     };
     
@@ -47,31 +63,59 @@ $(document).ready(function(){
         
      //Creates a new Messaging.Message Object and sends it to the HiveMQ MQTT Broker
     var publish = function () {
-         //Send your message (also possible to serialize it as JSON or protobuf or just use a string, no limitations)
-       var message = new Messaging.Message($('#message').val());
-       message.destinationName = "topic";
-       message.qos = 0;
-       client.send(message);
-        $('#message').val("");
+       if (connected){
+            var message = new Messaging.Message($('#message').val());
+            message.destinationName = "topic";
+            message.qos = 0;
+            client.send(message);
+            messageCount++;
+            $('#messageCount').text(messageCount);
+        }
     };
     
-    $('#send').click(publish);
-    
-    var rate;
-    $("#rates").change(function(){
-        rate = $('#rates').val();
-        $('#messageFrequency').text(rate);
+    $('#send').click(function(){
+        publish();
+        $('#message').val("");
     });
     
-    var spamming = false;
+    var updateRate = function(){
+        switch($('#rates').val()){
+            case 'low':
+                delay = 100;
+                break;
+            case 'medium':
+                delay = 10;
+                break;
+            case 'high':
+                delay = 1;
+                break;
+        }//parse low medium high
+        
+        $('#spamrate').text($('#rates').val());
+    };
+    updateRate();
+    $("#rates").change(updateRate);
+    
+    var updateDuration = function(){
+        duration = parseInt($('#times').val());
+        $('#duration').text(duration);
+    };
+    updateDuration();
+    $("#times").change(updateDuration);
     
     
     var spam = function(){
         if(spamming){
-            $('#message').val("Mass message");
+            setTimeout(spam, delay);
             publish();
-            setTimeout(spam, 1000/rate - 1);
         }
+    };
+    
+    var stop = function(){
+        clearTimeout(spamControl);
+        spamming = false;
+        toggleSpamButtons();
+        $('#message').val("");
     };
     
     var toggleSpamButtons = function(){
@@ -80,16 +124,13 @@ $(document).ready(function(){
         $("#send").prop("disabled", !$("#send").prop("disabled"));
     };
     
-
-    
     $('#start').click(function(){
         spamming = true;
         toggleSpamButtons();
+        $('#message').val("*");
         spam();
+        spamControl = setTimeout(stop, duration*60000);
     });
     
-    $('#stop').click(function(){
-        spamming = false;
-        toggleSpamButtons();
-    });
+    $('#stop').click(stop);
 });

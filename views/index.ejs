@@ -6,8 +6,8 @@
 	<link type="text/css" rel="stylesheet" href="stylesheets/style.css"/>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="/scripts/paho.js"></script>
-    <script src="/scripts/additionalPaho.js"></script>
+    <script src="https://git.eclipse.org/c/paho/org.eclipse.paho.mqtt.javascript.git/plain/src/mqttws31.js"></script>
+    <script src="/scripts/script.js"></script>
 	<meta charset="utf-8"/>
 </head>
 <body align="center">
@@ -21,32 +21,42 @@
 	        </div>
 	    </div>
 	    <div class="container">
-	    	<h1 id="header">Hello Websocket</h1>
+	    	<h1>Hello Websocket</h1>
 	    </div>
 	    
 	    <div class="container" align="right">
 	        <br/>
-	        <textarea class="form-control" rows="6" id="message"></textarea>
+	        <textarea class="form-control" rows="8" id="message"></textarea>
 	        <label for="message">Message</label>
 	    </div>
 	    
 	    <div class="container">
 	        <button id="send" class="btn btn-lg">Send Message</button>
-	        <h3>Generate load at up to <span id = "messageFrequency">100</span> messages per second!</h3>
+	        <h3>Generate a <span id = "spamrate">high</span> message load for <span id ="duration">5</span> minutes!</h3>
 	        <div class="btn-group">
 	            <button id="start" class="btn btn-success btn-md">Start</button>
 	            <button id="stop" class="btn btn-danger btn-md" disabled>Stop</button>
 	        </div>
 	        <br/>
 	        <label for="sel1">Select messaging rate:</label><br/>
-	        <div class="col-xs-2 col-xs-offset-5">
-	            <select class="form-control" id="rates">
+	        <div class="col-xs-2 col-xs-offset-4">
+	            <select class="form-control input-lg" id="rates">
 	                <option>10</option>
 	                <option selected>100</option>
 	                <option>1000</option>
 	            </select>
 	        </div>
-	        <br/><br/>
+	        <div class="col-xs-2">
+            	<select class="form-control input-lg" id="times">
+                	<option>1</option>
+                	<option>3</option>
+                	<option selected>5</option>
+            	</select>
+            	<label for="times">Duration in Minutes</label>
+        	</div>
+        	
+	        <br/><br/><br/><br/>
+	        <h4>You have sent <span id="messageCount">0</span> messages!</h4>
 	        <h4><a href='#'>About</a></h4>
 	    </div>
     </div>

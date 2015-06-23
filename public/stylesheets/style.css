@@ -7,7 +7,7 @@ body{
     background-color: #3B4B54; 
 }
 
-#header {
+h1 {
     background-color: #126D7A;
     padding: 5px;
     font-weight: bold;
@@ -18,10 +18,14 @@ body{
     background-color: #126D7A;
 }
 
-#messageFrequency{
+span{
     color: #2BBEAA;
 }
 
 a{
     color: #2BBEAA;
+}
+
+textarea {
+    resize: none;
 }
