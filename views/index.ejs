@@ -12,23 +12,22 @@
 </head>
 <body>
     <div class="pull-left">
-        <h4>IBM Guided Experience | <a href='#'>About</a></h4>
+        <h4>IBM Guided Experience <a href='#'>About</a></h4>
     </div>
     <div class="pull-right">
         <h4>Made with <b>IBM Bluemix</b></h4>
     </div>
-    
+    <br/><hr/>
     <div class="container">
-    	<br/><br/>
     	<h1>Hello Websocket</h1>
         <br/>
         
         <div class="col-xs-2">
             <label for="rates">Messaging Rate</label>
             <select class="form-control input-md" id="rates">
-                <option>low</option>
-                <option>medium</option>
-                <option selected>high</option>
+                <option>Low</option>
+                <option>Medium</option>
+                <option selected>High</option>
             </select>
         </div>
         <div class="col-xs-2">
@@ -46,10 +45,11 @@
         <br/>
         
         <button id="send" class="btn btn-lg">Send a Message</button>
+        <hr/>
     </div>
     
     <div class="container" align="center">
-        <br/>
+        
         <h3>Generate a <span id = "spamrate">high</span> message load for <span id ="duration">5</span> minutes!</h3>
         <div class="btn-group">
             <button id="start" class="btn btn-md">Start</button>

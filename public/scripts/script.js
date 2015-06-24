@@ -80,13 +80,13 @@ $(document).ready(function(){
     
     var updateRate = function(){
         switch($('#rates').val()){
-            case 'low':
+            case 'Low':
                 delay = 100;
                 break;
-            case 'medium':
+            case 'Medium':
                 delay = 10;
                 break;
-            case 'high':
+            case 'High':
                 delay = 1;
                 break;
         }//parse low medium high

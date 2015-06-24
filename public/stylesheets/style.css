@@ -4,6 +4,10 @@ body{
     padding: 15px;
 }
 
+h1{
+	color: #2BBEAA;
+}
+
 button{
     background-color: #2BBEAA;
 }
@@ -22,4 +26,10 @@ textarea{
 
 .col-xs-2{
     padding-left: 0;
+}
+
+h4 a{
+	border-left: 1px solid white;
+    padding-left: 15px;
+    margin-left: 15px;
 }
