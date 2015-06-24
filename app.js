@@ -110,24 +110,17 @@ mqttServe.on('clientConnected', function(client) {
 });
 
 mqttServe.on('published', function(packet, client){
-	console.log('Topic', packet.topic);
-	console.log('Message', packet.payload);
-	console.log('Client', client);
-	console.log('Message.toString', packet.payload.toString("utf8"));
 
 	fs.appendFile("../logs/mqtt.log", packet.topic + ": " + packet.payload.toString("utf8") + "\n", function(err) {
 	    if(err) {
 	        return console.log(err);
 	    }	
-	    console.log("The file was saved!");
 	}); 
 	
 	db.insert({"Topic": packet.topic, "Message": packet.payload.toString("utf8")}, function(err, body) {
  		if (!err)
     		console.log(body);
 		});
-
-	
 
 });
 
