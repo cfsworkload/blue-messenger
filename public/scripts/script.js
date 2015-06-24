@@ -91,7 +91,7 @@ $(document).ready(function(){
                 break;
         }//parse low medium high
         
-        $('#spamrate').text($('#rates').val());
+        $('#spamrate').text($('#rates').val().toLowerCase());
     };
     updateRate();
     $("#rates").change(updateRate);
