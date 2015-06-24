@@ -1,8 +1,9 @@
 # Workload - Scalable Web App
+	
 
 ###Scalable Web Application example implemented in Cloud Foundry 
 
-
+		
 ## Big Picture
 
 	We will be deploying an messaging web application that will utilizes and demonstrates
