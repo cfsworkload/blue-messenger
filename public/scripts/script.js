@@ -127,7 +127,9 @@ $(document).ready(function(){
     $('#start').click(function(){
         spamming = true;
         toggleSpamButtons();
-        $('#message').val("*");
+        if ($('#message').val() == ''){
+        	$('#message').val("*");
+        }//add a default message
         spam();
         spamControl = setTimeout(stop, duration*60000);
     });
