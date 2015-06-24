@@ -21,7 +21,7 @@ $(document).ready(function(){
         $('#start').prop('disabled', false);
         
         $('#send').css("background-color","#2BBEAA");
-        $('#send').text("Send Message");
+        $('#send').text("Send a Message");
     };
     
     buttonsDisconnected();
