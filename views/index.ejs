@@ -23,7 +23,7 @@
         <br/>
         
         <div class="col-xs-2">
-            <label for="rates">Messaging Rate</label>
+            <label for="rates">Messaging Rate:</label>
             <select class="form-control input-md" id="rates">
                 <option>Low</option>
                 <option>Medium</option>
@@ -31,7 +31,7 @@
             </select>
         </div>
         <div class="col-xs-2">
-            <label for="times">Duration in Minutes</label>
+            <label for="times">Duration in Minutes:</label>
             <select class="form-control input-md" id="times">
                 <option>1</option>
                 <option>3</option>
@@ -40,22 +40,23 @@
         </div>
         <br/><br/><br/><br/>
         
-        <label for="message">Message</label>
+        <label for="message">Message:</label>
         <textarea class="form-control" rows="8" id="message"></textarea>
         <br/>
         
         <button id="send" class="btn btn-lg">Send a Message</button>
-        <hr/>
+        <br/><hr/>
     </div>
     
     <div class="container" align="center">
         
         <h3>Generate a <span id = "spamrate">high</span> message load for <span id ="duration">5</span> minutes!</h3>
-        <div class="btn-group">
-            <button id="start" class="btn btn-md">Start</button>
-            <button id="stop" class="btn btn-md" disabled>Stop</button>
-        </div>
         <br/>
+        <div class="btn-group">
+            <button id="start" class="btn btn-lg">Start</button>
+            <button id="stop" class="btn btn-lg" disabled>Stop</button>
+        </div>
+        <br/><br/>
         <h4>You have sent <span id="messageCount">0</span> messages!</h4>
     </div>
 </body>
