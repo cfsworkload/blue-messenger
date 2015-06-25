@@ -20,6 +20,16 @@ a{
     color: #2BBEAA;
 }
 
+a:hover{
+	color: white;
+	text-decoration: none;
+}
+
+a:selected{
+	color: #2BBEAA;
+	text-decoration: none;
+}
+
 textarea{
     resize: none;
 }
