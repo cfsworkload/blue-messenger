@@ -6,8 +6,8 @@
 		
 ## Big Picture
 
-	We will be deploying an messaging web application that will utilizes and demonstrates
-	Bluemix services "Monitoring and Analytics", "Autoscale", and "Cloudant NoSQL DB"
+	We will be deploying an messaging web application that will utilize and demonstrate
+	the Bluemix services "Monitoring and Analytics", "Autoscale", and "Cloudant NoSQL DB"
 
 ###Workflow - 
 
@@ -15,14 +15,14 @@
 
 ## Introduction
 
-	A messaging web application has been created that we will depoly it into our personal space
-	after you have signed up for the Bluemix and their DevOps servies . We will attach the the
+	A messaging web application has been created that we will depoly into our personal space
+	after you have signed up for Bluemix and their DevOps service. We will attach the the
 	"Monitoring and Analytics", "Autoscale", and "Cloudant NoSQL DB" servcies and provide instruction
 	into understanding how the applications works and how to monitor the attached services.  
 
 ## Sign up for / Log into Bluemix and DevOPs
 
-	//TODO - Making a guide for signing up for bluemix
+	Sign up for DevOps Services at https://hub.jazz/net . When you sign up, you'll create an IBM id, create an alias, and register with Bluemix.
 
 
 ## Create Cloudant NoSQL DB through Bluemix Dashboard
@@ -30,18 +30,18 @@
 	At this point, our first goal is to create a Cloudant NoSQL Database for our app that will 
 	be used to store data when we write spam messages. Bluemix provides Cloudant as a embedded 
 	service located in the service catalog. Once we have created the Cloudant instance, we will
-	set out to fork (copy) the application code and deploy it while binding (attaching) our 
-	newly created Cloudant instance at runtime of the deploy.
+	set out to fork (copy) the application's code and deploy it while binding (attaching) our 
+	newly created Cloudant instance at runtime.
 	
 * Log into your Dashboard at https://console.ng.bluemix.net/
 * From main page scroll down till you see and select "ADD A SERVICE OR API"
-* In the next window, in the top search bar type "cloudant" and select "Cloudant NoSQL DB"
+* The window that pops up is the Services Catalog, in the top search bar type "cloudant" and select "Cloudant NoSQL DB"
 
 ![Example](images/cloudant.jpg)
 
 	
 	This will bring up a box where you need to fill in information about your Bluemix and 
-	how/where the Cloudant service will sit
+	how/where the Cloudant service will sit.
 
 * In the "Space" select your desired space in your Bluemix account
 * In "App:" select "Leave unbound"
@@ -66,7 +66,7 @@ https://www.ng.bluemix.net/docs/#services/Cloudant/index.html#Cloudant
 
 ![Example](images/fork.jpg)
 
-	A menu will pop up where you will need to provide infomation on when the code will be forked 
+	A menu will pop up where you will need to provide infomation on where the code will be forked 
 	to.
 
 * In the first field "Name your project:" name the project "MQTT-Web-App"
@@ -131,9 +131,9 @@ will be used as your DNS name and is publicly accessible .. I this case I will a
 
 ## Add Services and Monitor from Bluemix Dashboard
 
-	At this point, we should have a running application in our Bluemix space, that we specified,
-	and can now add desired services through the Bluemix UI. For this tutorial, we will be adding
-	"Monitoring and Analytics" and "Auto-Scaling".
+	At this point, we should have a running application in your Bluemix space, where you specified,
+	and can now add desired services, through the Bluemix UI. For this part of the tutorial, we will be adding
+	"Monitoring and Analytics" and "Auto-Scaling" services.
 
 * Log into your Dashboard at https://console.ng.bluemix.net/
 * From main select your application you just created ... default is "MQTT-Web-App"
@@ -180,3 +180,69 @@ will be used as your DNS name and is publicly accessible .. I this case I will a
 
 	Now, we will review how to utilize the "Monitoring and Analytics" service and obtain data on the
 	web application. 
+	
+    For learning how to utilize the data provided in this service see -
+	https://www.ng.bluemix.net/docs/#services/monana/index.html#gettingstartedtemplate
+	
+* return to your application's dashboard and the top of the screen you will see the routes listed
+
+![Example](imagesgoeshere)
+
+	These are your applications publicly accessible DNS names that you put into your browser to launch the application
+	
+* Click on anyone of your routes to load the "Web Messanger" application
+
+![Example](imagesgoeshere)
+
+	From the main page you will see a 'Messaging Rate:' dropdown where you specify the speed/rate of the messages 
+	that get spammed to the database. Also, in the 'Duration in Minutes:' dropdown you select how many minutes
+	the spamming will go on for. In the "Message:" box you put your messages that will be sent to the database 
+	when you spam. Finally, at the bottom of the webpage you will see "Start" and "Stop" buttons where you
+	will initiate and stop the spamming.
+	
+	
+![Example](images/website.jpg)
+
+		
+* In the 'Messaging Rate' box put any message you would like to spam
+* Set the rate to 'Medium'
+* Set your duration to '5'
+* Click 'Start'
+
+
+	You have just succesfully started the spam of message to the database. To see the messages populated click on your
+	Cloudant service in the Application's dashboard. Also, click on the "Monitoring and Analytics" service in your
+	applications dashboard. Utilize the information you learned in the document refrenced above to pull data about your
+	application.
+	
+
+## Test Auto-Scaling
+
+	We are now going to stress our application through the actual app and than 
+	monitor the Auto-Scaling application at work.
+	
+	First we must become familiar with the service by reading through the Bluemix doc on Auto-Scaling -
+	https://www.ng.bluemix.net/docs/#services/Auto-Scaling/index.html#autoscaling
+	
+* Reload the webpage for the application by selecting the route once again. 
+* In the 'Messaging Rate' box put any message you would like to spam
+* Set the rate to 'High'
+* Set your duration to '5'
+* Click 'Start'
+
+	
+	If we return to our application's dashboard we will see a familiar screen. Only, this time we will watch for the 
+	'Instances' box to increase, which is telling us bluemix is spinning up more instances of our application
+	to handle to load we are creating spamming at a 'High' rate.
+	
+## DevOps Pipeline 
+
+	Here, we are going do an overview of the DevOps Pipeline service bluemix provides so you can become familiar
+	how to utilize it for future changes to this or other applications.
+
+## Getting Familiar with the Application
+
+	In section we are going to do an overview of the actual code and what the app is actually doing in the 
+	background. 
+
+	
