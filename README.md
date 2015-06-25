@@ -3,11 +3,9 @@
 
 ###Scalable Web Application example implemented in Cloud Foundry 
 
-		
-## Big Picture
 
 We will be deploying an messaging web application that will utilize and demonstrate
-	the Bluemix services "Monitoring and Analytics", "Autoscale", and "Cloudant NoSQL DB"
+the Bluemix services "Monitoring and Analytics", "Autoscale", and "Cloudant NoSQL DB"
 
 ## Introduction
 
@@ -18,9 +16,10 @@ into understanding how the applications works and how to monitor the attached se
 
 ## Sign up for / Log into Bluemix and DevOPs
 
-Sign up for DevOps Services at https://hub.jazz/net . When you sign up, you'll create an IBM id, create an alias, and register with Bluemix.
+Sign up for Bluemix at https://console.ng.bluemix.net/ and DevOps Services at https://hub.jazz/net . When you sign up, you'll create an IBM id, create an alias, and register with Bluemix.
 
-For more information refrence the Bluemix getting started documents at - https://hub.jazz.net/tutorials/jazzeditor/
+For more information, refrence the Bluemix getting started documents at - 
+
 ## Create Node.js Application and Attach Services
  
 Our first goal is to create a Node.js Application through the Bluemix UI. After we have done that, we will create
@@ -31,7 +30,8 @@ with the services attached, we will set out to fork (copy) the application's cod
 	1) Log into your Dashboard at https://console.ng.bluemix.net/
     2) From the main dashboard page select "CREATE AN APP"
     
-![Example](imagesgoeshere)
+![Example](images/createapp.jpg)
+
     
 This will bring up and window to select either "Web" or "Mobile" 
 	
@@ -53,6 +53,8 @@ You should now see the application in your main dashboard in your "Applications"
 This will take you into the application's personal dashboard where we can add/bind services
 
 	2) In the application window select "ADD A SERVICE OR API"
+	
+![Example](images/AddService-1.jpg)
 
 The window that pops up is the Services Catalog. 
 
@@ -224,7 +226,8 @@ We are now going to stress our application and monitor the Auto-Scaling service 
 	
 First we must become familiar with the service by reading through the Bluemix documentation on Auto-Scaling at -
 https://www.ng.bluemix.net/docs/#services/Auto-Scaling/index.html#autoscaling
-	
+
+
 	1) Reload the webpage for the application by selecting one of the routes 
 	2) In the 'Messaging Rate' box put any message you would like to spam
 	3) Set the rate to 'High'
@@ -232,9 +235,7 @@ https://www.ng.bluemix.net/docs/#services/Auto-Scaling/index.html#autoscaling
 	5) Click 'Start'
 
 	
-If we return to our application's dashboard we will see a familiar screen. Only, this time we will watch for the 
-'Instances:' box's number to increase from one. This will be telling us bluemix is spinning up more instances of our application
-to handle to load we are creating spamming at a 'High' rate.
+From our application's dashboard select the "Auto-Scaling" Service
 	
 ## DevOps Pipeline 
 
