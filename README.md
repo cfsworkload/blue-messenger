@@ -25,16 +25,21 @@
 	Sign up for DevOps Services at https://hub.jazz/net . When you sign up, you'll create an IBM id, create an alias, and register with Bluemix.
 
 
-## Create Cloudant NoSQL DB through Bluemix Dashboard
+## Create Node.js Application and attach Services
  
-	At this point, our first goal is to create a Cloudant NoSQL Database for our app that will 
-	be used to store data when we write spam messages. Bluemix provides Cloudant as a embedded 
-	service located in the service catalog. Once we have created the Cloudant instance, we will
-	set out to fork (copy) the application's code and deploy it while binding (attaching) our 
-	newly created Cloudant instance at runtime.
+	At this point, our first goal is to create a Node.js Application through the Bluemix UI and then a
+	Cloudant NoSQL Datase that will	be used to store data when we write spam messages. Bluemix provides the 
+	services embedded in the service catalog. Once we have created the Node.js Application, we will
+	set out to fork (copy) the application's code and deploy it over our current running Node.js application
+
+* * Log into your Dashboard at https://console.ng.bluemix.net/
+
+
 	
-* Log into your Dashboard at https://console.ng.bluemix.net/
-* From main page scroll down till you see and select "ADD A SERVICE OR API"
+
+	You have now succesfully created you blank Node.js application in Bluemix. We will not create and bind the services. 
+
+* From your main dashboard scroll down till you see and select "ADD A SERVICE OR API"
 * The window that pops up is the Services Catalog, in the top search bar type "cloudant" and select "Cloudant NoSQL DB"
 
 ![Example](images/cloudant.jpg)
@@ -44,8 +49,8 @@
 	how/where the Cloudant service will sit.
 
 * In the "Space" select your desired space in your Bluemix account
-* In "App:" select "Leave unbound"
-* In "Service name:" put "Cloudant NoSQL DB-xh" [explain changing to "pc" or to remember name for manifest]
+* In "App:" select our "Application"
+* In "Service name:" field put any name you want. 
 * In your "Selected Plan:" leave it as default "Shared"
 * Select "CREATE"
 
@@ -55,81 +60,6 @@
 For more information on Cloudant please see the docs at - 
 
 https://www.ng.bluemix.net/docs/#services/Cloudant/index.html#Cloudant
-
-## Fork project to personal Jazz Repo space 
-	
-	Our next goal, is to fork the publicly accessible repository hosted in hub.jazz.net into your 
-	personal DevOPs space. Once we do this we will be able to deploy the code to bluemix and spin
-	up instances of the Web Application. 
-	
-* From https://hub.jazz.net/git/ank/Mosca-Cloudant/ select "Fork Project" in top right of page
-
-![Example](images/fork.jpg)
-
-	A menu will pop up where you will need to provide infomation on where the code will be forked 
-	to.
-
-* In the first field "Name your project:" name the project "MQTT-Web-App"
-* Check "Make it private" if you want the repo to be private, otherwise leave unchecked
-* Keep "Make this a Bluemix Project" checked
-* Select your desired Region, Organization, and Space and select "Create". The space needs to 
-be in the same where you assigned your Cloudant database service in the last section.
-
-![Example](images/create.jpg)
-
-	You have successfully forked this application code to your personalJazz Hub space.
-To find more about Bluemix's DevOPs features reference the DOCs at - 
-https://hub.jazz.net/docs
-
-## Deploy to Bluemix through Jazz Hub
-
-	Next, we will take the repository, with the application code we just foked, and deploy it to
-	bluemix. Once we have done this, we will have a running application we can monitor and add 
-	services to.
-
-* From your DevOPs project page, you just created, select "EDIT CODE" at the top right
-
-![Example](images/editcode.jpg)
-
-	 In your "EDIT CODE" window  you will see the files that are contained in the application's code
-
-* double click the manifest.yml which will display the file
-* In the "host:" field you will see "mqtt-web-app" ... we need to append to the end of this hostname and make it unique because the host name
-will be used as your DNS name and is publicly accessible .. I this case I will add "test749" to the end of the "mqtt-web-app"
-
-![Example](images/manifest.jpg)
-
-
-* In your "EDIT CODE" window click the drop down found above the files located in the code and select the pencil symbol to edit launch configuration
-
-
-![Example](images/editlaunch.jpg)
-
-
-	A window will pop up and you will be required to enter information about where the code will be
-	deployed to.
-
-* In the "Edit Launch Configuration" window
-	* In the "Launch Config Name*:" field give a Config Name 
-	* In the "Target*:" field select your region
-	* In the "Organization*:" field select your desired org
-	* In the "Space*:" field select your Bluemix Space you want to deploy to
-	* In the "Application Name" field put the host name you specified in your manifest.yml
-	* In the "Host" field put "Mosca-Cloudant"
-	* In the "Domain" field leave default at "mybluemix.net"
-	* Click "Save"
-
-![Example](images/launchconfig.jpg)]
-
-* In your "EDIT CODE" window select the "Play" button to deploy your application to bluemix
-
-![Example](images/play.jpg)
-
-	Once you click "Deploy" it will reference the launch configurations you specified and read your
-	manifest.yml and push the code and bind the Cloudant service to the area specified. 
-
-
-## Add Services and Monitor from Bluemix Dashboard
 
 	At this point, we should have a running application in your Bluemix space, where you specified,
 	and can now add desired services, through the Bluemix UI. For this part of the tutorial, we will be adding
@@ -175,6 +105,74 @@ will be used as your DNS name and is publicly accessible .. I this case I will a
 
 	
 	You have now successfully binded "Monitoring and Analytics" and "Auto-Scaling" services to your web application
+
+
+## Fork project to personal Jazz Repo space 
+	
+	Our next goal, is to fork the publicly accessible repository hosted in hub.jazz.net into your 
+	personal DevOPs space. Once we do this we will be able to deploy the code to bluemix and spin
+	up instances of the Web Application. 
+	
+* From https://hub.jazz.net/git/ank/Mosca-Cloudant/ select "Fork Project" in top right of page
+
+![Example](images/fork.jpg)
+
+	A menu will pop up where you will need to provide infomation on where the code will be forked 
+	to.
+
+* In the first field "Name your project:" name the project the same name your named your blank node.js app
+* Check "Make it private" if you want the repo to be private, otherwise leave unchecked
+* Keep "Make this a Bluemix Project" checked
+* Select your the Region, Organization, and Space as your blank Node.js app and select "Create". 
+
+
+![Example](images/create.jpg)
+
+	You have successfully forked this application code to your personalJazz Hub space.
+To find more about Bluemix's DevOPs features reference the DOCs at - 
+https://hub.jazz.net/docs
+
+## Deploy to Bluemix through Jazz Hub
+
+	Next, we will take the repository, with the application code we just foked, and deploy over the the blank Node.js 
+	application we created. The services we create earlier will still be binded.
+
+* From your DevOPs project page, you just created, select "EDIT CODE" at the top right
+
+![Example](images/editcode.jpg)
+
+	 In your "EDIT CODE" window  you will see the files that are contained in the application's code
+
+
+
+* In your "EDIT CODE" window click the drop down found above the files located in the code and select the pencil symbol to edit launch configuration
+
+
+![Example](images/editlaunch.jpg)
+
+
+	A window will pop up and you will be required to enter information about where the code will be
+	deployed to.
+
+* In the "Edit Launch Configuration" window
+	* In the "Launch Config Name*:" field give a Config Name 
+	* In the "Target*:" field select your region that your blank Node.js app sits
+	* In the "Organization*:" field select your organization where your blank Node.js app sits
+	* In the "Space*:" field select your Bluemix Space where your Node.js application sits
+	* In the "Application Name" field put the same name as your Node.js application
+	* In the "Host" field put the same hostname as you gave for your Node.js application
+	* In the "Domain" field leave default at "mybluemix.net"
+	* Click "Save"
+
+![Example](images/launchconfig.jpg)]
+
+* In your "EDIT CODE" window select the "Play" button to deploy your application to bluemix
+
+![Example](images/play.jpg)
+
+	Once you click "Deploy" it will reference the launch configurations you specified and read your
+	manifest.yml and push the code and bind the Cloudant service to the area specified. 
+
 
 ## Monitoring Application Performance
 
@@ -237,8 +235,10 @@ will be used as your DNS name and is publicly accessible .. I this case I will a
 	
 ## DevOps Pipeline 
 
-	Here, we are going do an overview of the DevOps Pipeline service bluemix provides so you can become familiar
+	Here, we are going do an overview of the DevOps Pipeline service Bluemix provides so you can become familiar
 	how to utilize it for future changes to this or other applications.
+	
+	
 
 ## Getting Familiar with the Application
 
