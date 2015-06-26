@@ -4,7 +4,7 @@
 ###Scalable Web Application example implemented in Cloud Foundry 
 
 
-We will be deploying a messaging web application that utilizes and demonstrates
+The messaging web application utilizes and demonstrates
 the Bluemix services "Monitoring and Analytics", "Autoscale", and "Cloudant NoSQL DB".
 
 ## Introduction
