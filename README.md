@@ -78,7 +78,7 @@ This will bring up a box where you need to configure the Cloudant service.
 You have successfully deployed and binded an instance of Cloudant NoSQL DB to your blank Node.js application. 
 For more information on Cloudant please see the docs at https://www.ng.bluemix.net/docs/#services/Cloudant/index.html#Cloudant
 
-At this point, we have our blank Node.js application with a binded instance of a Cloudant databsae. For this part of the tutorial, we will be adding
+At this point, we have our blank Node.js application with a binded instance of a Cloudant database. For this part of the tutorial, we will be adding
 "Monitoring and Analytics" and "Auto-Scaling" services to the application.
 
 	1) In the application window select "ADD A SERVICE OR API".
