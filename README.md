@@ -48,13 +48,14 @@ You should now see the application in your main dashboard in your "Applications"
 
 	1) From main select your application you just created
 
-![Example](images/ourapplication.jpg)
+![Example](images/selectapp-1.jpg)
 
 This will take you into the application's personal dashboard where we can add/bind services
 
 	2) In the application window select "ADD A SERVICE OR API"
 	
-![Example](images/AddService-1.jpg)
+![Example](images/addservice-1.jpg)
+
 
 The window that pops up is the Services Catalog. 
 
@@ -71,7 +72,7 @@ This will bring up a box where you need to fill in information about how/where t
 	 In your "Selected Plan:" select your desired plan
 	 Select "CREATE"
 
-![Example](images/AddService.jpg)
+![Example](images/cloudant-1.jpg)
 
 You have successfully deployed and binded an instance of Cloudant NoSQL DB to your blank Node.js application. 
 For more information on Cloudant please see the docs at - 
@@ -83,7 +84,8 @@ At this point, we have our blank Node.js application with a binded instance of a
 
 	1) In the application window select "ADD A SERVICE OR API"
 
-![Example](images/AddService-1.jpg)
+![Example](images/addservice-2.jpg)
+
 
 This will bring up the Bluemix Services Catalog
 	
