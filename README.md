@@ -277,14 +277,5 @@ how to utilize it for future changes to this or other applications.
 
 In section we are going to review the actual code and what the app is doing in the background. 
 
-## Testing markdown syntax
-
-This is a parapgrah. 
-
-1. List item 1
-2. List item 2
-
-	1) List item 1 indented with parentheses
-	2) List item 2
 
 	
