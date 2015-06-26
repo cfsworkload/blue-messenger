@@ -12,7 +12,7 @@ the Bluemix services "Monitoring and Analytics", "Autoscale", and "Cloudant NoSQ
 A messaging web application has been created that we will depoly into our personal space
 after signing up for Bluemix and the DevOps service. We will attach the the
 "Monitoring and Analytics", "Autoscale", and "Cloudant NoSQL DB" servcies and provide instructions
-into understanding how the applications works and how to monitor the attached services.  
+into understanding how the application works and how to monitor the attached services.  
 
 ## Sign up for / Log into Bluemix and DevOPs
 
@@ -20,7 +20,7 @@ Sign up for Bluemix at https://console.ng.bluemix.net/ and DevOps Services at ht
 
 For more information, refrence the Bluemix getting started documents at - 
 
-## Create Node.js Application and Attach Services
+## Create Node.js Application and Attach the Services
  
 Our first goal is to create a Node.js Application through the Bluemix UI. After we have done that, we will create and bind
 a Cloudant NoSQL Database. This will be used to store messages that we spam. We will then create and bind the "Monitoring and Analytics"
@@ -121,7 +121,7 @@ This will bring a windows where you will need to provide information about where
 You have now successfully binded "Monitoring and Analytics" and "Auto-Scaling" services to your web application.
 
 
-## Fork project to personal Jazz Repo space 
+## Fork project to personal DevOPs space 
 	
 Our next goal, is to fork the publicly accessible repository hosted in hub.jazz.net into your 
 personal DevOPs space. Once we do this, we will be able to deploy the code to Bluemix and spin
@@ -146,7 +146,7 @@ You have successfully forked this application code to your personalJazz Hub spac
 To find more about Bluemix's DevOPs features reference the DOCs at - 
 https://hub.jazz.net/docs
 
-## Deploy to Bluemix through Jazz Hub
+## Deploy to Bluemix through DevOPs space
 
 Next, we will take the repository, with the application code we just foked, and deploy over the the blank Node.js 
 application we created. The services we create earlier will still be binded.
