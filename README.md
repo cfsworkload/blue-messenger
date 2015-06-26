@@ -18,7 +18,7 @@ for understanding how the application works and how to monitor the attached serv
 
 Sign up for Bluemix at https://console.ng.bluemix.net/ and DevOps Services at https://hub.jazz/net . When you sign up, you'll create an IBM id, create an alias, and register with Bluemix.
 
-For more information, refrence the Bluemix getting started documents at - 
+For more information, reference the Bluemix getting started documents at - 
 
 ## Create Node.js Application and Attach the Services
  
