@@ -22,15 +22,15 @@ For more information, refrence the Bluemix getting started documents at -
 
 ## Create Node.js Application and Attach Services
  
-Our first goal is to create a Node.js Application through the Bluemix UI. After we have done that, we will create
+Our first goal is to create a Node.js Application through the Bluemix UI. After we have done that, we will create and bind
 a Cloudant NoSQL Database. This will be used to store messages that we spam. We will then create and bind the "Monitoring and Analytics"
 and "Autoscaling" services. Bluemix provides these services embedded in the Bluemix Service Catalog. Once we have created the Node.js Application
-with the services attached, we will set out to fork (copy) the application's code and deploy it over our current running Node.js application
+with the services attached, we will set out to fork (copy) the application's code and deploy it over the blank Node.js application.
 
 	1) Log into your Dashboard at https://console.ng.bluemix.net/
     2) From the main dashboard page select "CREATE AN APP"
     
-![Example](images/createapp.jpg)
+![Example](images/createanapp.jpg)
 
     
 This will bring up and window to select either "Web" or "Mobile" 
@@ -97,6 +97,8 @@ This will bring a windows where you will need to provide information about where
 	 In "App:" field select your application
 	 In "Selected Plan:" field select your desired plan
 	 Select "CREATE" and then select "RESTAGE" when it pops up ( it might do this for you automatically )
+	 
+![Example](images/createmonitoring.jpg)
  
 We have now successfully attached the "Monitoring and Analytics" service to our web application.
 
@@ -112,6 +114,7 @@ This will bring a windows where you will need to provide information about where
 	In "Selected Plan:" select your desired plan
 	Select "CREATE" and then select "RESTAGE" when it pops up ( it might do this for you automatically )
 
+![Example](images/createautoscaling.jpg)
 	
 You have now successfully binded "Monitoring and Analytics" and "Auto-Scaling" services to your web application
 
@@ -124,7 +127,7 @@ up instances of the Web Application.
 	
 	1) From https://hub.jazz.net/git/ank/Mosca-Cloudant/ select "Fork Project" in top right of the page
 
-![Example](images/fork.jpg)
+![Example](images/forkproject.jpg)
 
  A menu will pop up where you will need to provide infomation on where the code will be forked 
 	to.
@@ -148,7 +151,7 @@ application we created. The services we create earlier will still be binded.
 
 	1) From your DevOPs project page, you just created, select "EDIT CODE" at the top right
 
-![Example](images/editcode.jpg)
+![Example](images/editproject.jpg)
 
 In your "EDIT CODE" window  you will see the files that are contained in the application's code
 
@@ -177,7 +180,7 @@ deployed to.
 
 	1) In your "EDIT CODE" window select the "Play" button to deploy your application to bluemix
 
-![Example](images/play.jpg)
+![Example](images/playbutton.jpg)
 
 Once you click "Deploy" it will reference the launch configurations you specified and read your
 manifest.yml and push the code and override the code of your blank Node.js application 
@@ -213,6 +216,8 @@ will initiate and stop the spamming.
 	5) Set your duration to '5'
 	6) Click 'Start'
 
+![Example](images/mediumspam.jpg)
+
 
 You have just succesfully started the spamming of messages to the database. To see the messages populated click on your
 Cloudant service in the Application's Dashboard. Also, click on the "Monitoring and Analytics" service in your
@@ -244,13 +249,15 @@ and "Scaling History" tabs.
 
 ![Example](images/metrics.jpg)
 
-To start the stress and monitor auto scaling 
+To start the stress so you can monitor auto scaling from the 'Auto-Scaling' service
 
 	1) Reload the webpage for the application by selecting one of the routes 
 	2) In the 'Messaging Rate' box put any message you would like to spam
 	3) Set the rate to 'High'
 	4) Set your duration to '5'
 	5) Click 'Start'  
+
+![Example](images/pressstart.jpg)
 
 	
 ## DevOps Pipeline 
