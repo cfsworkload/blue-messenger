@@ -218,6 +218,8 @@ You have just succesfully started the spamming of messages to the database. To s
 Cloudant service in the Application's Dashboard. Also, click on the "Monitoring and Analytics" service in your
 Application's Dashboard to see and utilize the information you learned in the "Monitoring and Analytics" document 
 refrenced above. 
+
+![Example](images/monandcloud.jpg)
 	
 
 ## Test Auto-Scaling
@@ -227,15 +229,29 @@ We are now going to stress our application and monitor the Auto-Scaling service 
 First we must become familiar with the service by reading through the Bluemix documentation on Auto-Scaling at -
 https://www.ng.bluemix.net/docs/#services/Auto-Scaling/index.html#autoscaling
 
+	1) From our application's dashboard select the "Auto-Scaling" Service
+
+![Example](images/auto-scale-1.jpg)
+
+In here you can utilize the Auto-Scaling service shown in the document refrenced above.
+
+	2) Create Auto-Scaling policy to do testing under the "Policy-Configuration" tab
+
+![Example](images/policy.jpg)
+
+Once we starting spaming and stressing the server we can monitor the auto scaling from the "Metric Statistics"
+and "Scaling History" tabs.
+
+![Example](images/metrics.jpg)
+
+To start the stress and monitor auto scaling 
 
 	1) Reload the webpage for the application by selecting one of the routes 
 	2) In the 'Messaging Rate' box put any message you would like to spam
 	3) Set the rate to 'High'
 	4) Set your duration to '5'
-	5) Click 'Start'
+	5) Click 'Start'  
 
-	
-From our application's dashboard select the "Auto-Scaling" Service
 	
 ## DevOps Pipeline 
 
