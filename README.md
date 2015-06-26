@@ -4,13 +4,13 @@
 ###Scalable Web Application example implemented in Cloud Foundry 
 
 
-We will be deploying an messaging web application that will utilize and demonstrate
+We will be deploying a messaging web application that will utilize and demonstrate
 the Bluemix services "Monitoring and Analytics", "Autoscale", and "Cloudant NoSQL DB"
 
 ## Introduction
 
 A messaging web application has been created that we will depoly into our personal space
-after you have signed up for Bluemix and the DevOps service. We will attach the the
+after signing up for Bluemix and the DevOps service. We will attach the the
 "Monitoring and Analytics", "Autoscale", and "Cloudant NoSQL DB" servcies and provide instructions
 into understanding how the applications works and how to monitor the attached services.  
 
@@ -36,14 +36,14 @@ with the services attached, we will set out to fork (copy) the application's cod
 This will bring up and window to select either "Web" or "Mobile" 
 	
 	3) Select "Web"
-	4) Select "SDK for Node.js"
+	4) In the next window, Select "SDK for Node.js"
 	
 ![Example](images/nodejs-1.jpg)
 
-	5) In next window select "Continue"
-	6) In the next where it says "App Name" give a name for your web application and select "FINISH"
+	5) In the next window, select "Continue"
+	6) In the next window, where it says "App Name" give a name for your web application and select "FINISH"
 	
-It will take a while for the application to be create/stage. After it finishes staging, you have succesfully created your blank Node.js application in Bluemix. 
+It will take a while for the application to be create/stage. After it finishes staging, you have succesfully created a blank Node.js application in Bluemix. 
 You should now see the application in your main dashboard in your "Applications" category. We will now create and bind the services to our blank Node.js application. 
 
 	1) From main select your application you just created
