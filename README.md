@@ -5,7 +5,7 @@
 
 
 We will be deploying a messaging web application that will utilize and demonstrate
-the Bluemix services "Monitoring and Analytics", "Autoscale", and "Cloudant NoSQL DB"
+the Bluemix services "Monitoring and Analytics", "Autoscale", and "Cloudant NoSQL DB".
 
 ## Introduction
 
@@ -33,7 +33,7 @@ with the services attached, we will set out to fork (copy) the application's cod
 ![Example](images/createanapp.jpg)
 
     
-This will bring up and window to select either "Web" or "Mobile" 
+This will bring up and window to select either "Web" or "Mobile".
 	
 	3) Select "Web"
 	4) In the next window, Select "SDK for Node.js"
@@ -50,7 +50,7 @@ You should now see the application in your main dashboard in your "Applications"
 
 ![Example](images/selectapp-1.jpg)
 
-This will take you into the application's personal dashboard where we can add/bind services
+This will take you into the application's personal dashboard where we can add/bind services.
 
 	2) In the application window select "ADD A SERVICE OR API"
 	
@@ -118,7 +118,7 @@ This will bring a windows where you will need to provide information about where
 
 ![Example](images/createautoscaling.jpg)
 	
-You have now successfully binded "Monitoring and Analytics" and "Auto-Scaling" services to your web application
+You have now successfully binded "Monitoring and Analytics" and "Auto-Scaling" services to your web application.
 
 
 ## Fork project to personal Jazz Repo space 
@@ -155,7 +155,7 @@ application we created. The services we create earlier will still be binded.
 
 ![Example](images/editproject.jpg)
 
-In your "EDIT CODE" window  you will see the files that are contained in the application's code
+In your "EDIT CODE" window  you will see the files that are contained in the application's code.
 
 	2) In your "EDIT CODE" window click the drop down menu, found above the code files, and select the pencil symbol to edit launch configuration
 
@@ -185,7 +185,7 @@ deployed to.
 ![Example](images/playbutton.jpg)
 
 Once you click "Deploy" it will reference the launch configurations you specified and read your
-manifest.yml and push the code and override the code of your blank Node.js application 
+manifest.yml and push the code and override the code of your blank Node.js application.
 
 
 ## Monitoring Application Performance
@@ -251,7 +251,7 @@ and "Scaling History" tabs.
 
 ![Example](images/metrics.jpg)
 
-To start the stress so you can monitor auto scaling from the 'Auto-Scaling' service
+To start the stress so you can monitor auto scaling from the 'Auto-Scaling' service.
 
 	1) Reload the webpage for the application by selecting one of the routes 
 	2) In the 'Messaging Rate' box put any message you would like to spam
