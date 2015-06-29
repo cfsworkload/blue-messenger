@@ -8,11 +8,8 @@
 // for more info, see: http://expressjs.com
 var express = require('express');
 var http = require('http');
-var path = require('path');
-var morgan = require('morgan');
 var mosca = require('mosca');
 var fs = require('fs');
-var https = require ('https');
 
 
 var db;
@@ -21,12 +18,9 @@ var dbCredentials = {
 	dbName : 'my_sample_db'
 };
 
-// cfenv provides access to your Cloud Foundry environment
-// for more info, see: https://www.npmjs.com/package/cfenv
-// TODO var cfenv = require('cfenv');
 
-	var port = (process.env.VCAP_APP_PORT || 3000);
-	var host = (process.env.VCAP_APP_HOST || '0.0.0.0');
+var port = (process.env.VCAP_APP_PORT || 3000);
+var host = (process.env.VCAP_APP_HOST || '0.0.0.0');
 
 function initDBConnection() {
 	
@@ -96,10 +90,8 @@ app.use(express.static(__dirname + '/public'));
  * This is our home route.  This gets called when we visit our
  * base address http://MYSERVERNAME.mybluemix.net/
 **/
-var userCount = 0;
 app.get('/', function(req, res) {
-    	userCount = userCount + 1;
-        res.render('index', {userCount: userCount}); 
+        res.sendfile(__dirname + '/public/index.html');
     });
     
     
