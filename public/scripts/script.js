@@ -26,6 +26,9 @@ $(document).ready(function(){
     
     buttonsDisconnected();
     
+    //generate client
+    var client = new Messaging.Client(document.URL.substring(7), 80, "client_" + jQuery.now().toString().substring(7, 13) + parseInt(Math.random() * 100, 10) );
+
     //connect options
     var options = {
          timeout: 3,
@@ -46,8 +49,6 @@ $(document).ready(function(){
          }
     };//end options
     
-    //generate client
-    var client = new Messaging.Client(document.URL.substring(7), 80, "client_" + jQuery.now().toString().substring(7, 13) + parseInt(Math.random() * 100, 10) );
     
     client.onConnectionLost = function () {
         //Depending on your scenario you could implement a reconnect logic here
@@ -127,7 +128,7 @@ $(document).ready(function(){
     $('#start').click(function(){
         spamming = true;
         toggleSpamButtons();
-        if ($('#message').val() == ''){
+        if ($('#message').val() === ''){
         	$('#message').val("*");
         }//add a default message
         spam();
