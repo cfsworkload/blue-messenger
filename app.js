@@ -91,7 +91,7 @@ app.use(express.static(__dirname + '/public'));
  * base address http://MYSERVERNAME.mybluemix.net/
 **/
 app.get('/', function(req, res) {
-        res.render('index', {}); 
+        res.sendfile(__dirname + '/public/index.html');
     });
     
     
