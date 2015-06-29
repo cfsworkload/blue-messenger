@@ -6,6 +6,7 @@ $(document).ready(function(){
     var spamControl;
     var messageCount = 0;
 	
+	//functions to configure buttons
     //the send button also acts as a connection signal
     var buttonsDisconnected = function(){
         $('#send').prop('disabled', true);
@@ -24,6 +25,7 @@ $(document).ready(function(){
         $('#send').text("Send a Message");
     };
     
+    //not connected upon page load
     buttonsDisconnected();
     
     //generate client
@@ -32,14 +34,15 @@ $(document).ready(function(){
     //connect options
     var options = {
          timeout: 3,
-         //Gets Called if the connection has sucessfully been established
+         //called if the connection has sucessfully been established
          onSuccess: function () {
              if (!spamming){
                  buttonsConnected();
              }
              connected = true;
          },
-         //Gets Called if the connection could not be established
+         //called if the connection could not be established
+         //tries to reconnect
          onFailure: function () {
              if (!spamming){
                  buttonsDisconnected();
@@ -50,8 +53,9 @@ $(document).ready(function(){
     };//end options
     
     
+    //called when connection is lost
+    //tries to reconnect
     client.onConnectionLost = function () {
-        //Depending on your scenario you could implement a reconnect logic here
         if (!spamming){
             buttonsDisconnected();
         }
@@ -59,10 +63,10 @@ $(document).ready(function(){
         client.connect(options);
     };
     
-    //connect client
+    //try to connect client on page load
     client.connect(options);
-        
-     //Creates a new Messaging.Message Object and sends it to the HiveMQ MQTT Broker
+      
+     //Creates a new message bject and sends it to the MQTT broker
     var publish = function () {
        if (connected){
             var message = new Messaging.Message($('#message').val());
@@ -74,11 +78,14 @@ $(document).ready(function(){
         }
     };
     
+    //calls publish when "send" button is clicked
     $('#send').click(function(){
         publish();
         $('#message').val("");
     });
     
+    
+    //update messaging rate
     var updateRate = function(){
         switch($('#rates').val()){
             case 'Low':
@@ -94,17 +101,22 @@ $(document).ready(function(){
         
         $('#spamrate').text($('#rates').val().toLowerCase());
     };
+    //update messaging rate upon page load
     updateRate();
+    //update messaging rate when selection is changed
     $("#rates").change(updateRate);
     
+    //update messaging duration
     var updateDuration = function(){
         duration = parseInt($('#times').val());
         $('#duration').text(duration);
     };
+    //update messaging duration upon page load
     updateDuration();
+    //update messaging duration when selection is changed
     $("#times").change(updateDuration);
     
-    
+    //automatically publish messages
     var spam = function(){
         if(spamming){
             setTimeout(spam, delay);
@@ -112,19 +124,23 @@ $(document).ready(function(){
         }
     };
     
-    var stop = function(){
-        clearTimeout(spamControl);
-        spamming = false;
-        toggleSpamButtons();
-        $('#message').val("");
-    };
-    
+	//button configuration during automated messaging
     var toggleSpamButtons = function(){
         $("#start").prop("disabled", !$("#start").prop("disabled"));
         $("#stop").prop("disabled", !$("#stop").prop("disabled"));
         $("#send").prop("disabled", !$("#send").prop("disabled"));
     };
     
+	//stop automated messaging
+    var stop = function(){
+        clearTimeout(spamControl);
+        spamming = false;
+        toggleSpamButtons();
+        $('#message').val("");
+    };
+    $('#stop').click(stop);
+
+	//start automated messaging at set rate for set duration
     $('#start').click(function(){
         spamming = true;
         toggleSpamButtons();
@@ -134,6 +150,4 @@ $(document).ready(function(){
         spam();
         spamControl = setTimeout(stop, duration*60000);
     });
-    
-    $('#stop').click(stop);
 });
