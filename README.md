@@ -117,74 +117,80 @@ deployed to.
 
 ![Example](images/website.jpg)
 
+## What does the app do?
+
+Your new web application is a simple web server that can recieve MQTT messages.  The server will write the contents of each message it recieves to your Cloudant database.
+  The purpose of the application is to allow you to experiment with workloads and the Bluemix services.
 
 
-## Monitoring Application Performance
-
-Now, we will review how to utilize the "Monitoring and Analytics" service and obtain data on the
-web application. 
-	
-For learning how to utilize the data provided in this service see
-https://www.ng.bluemix.net/docs/#services/monana/index.html#gettingstartedtemplate.
-
-
-From the main page you will see a "Messaging Rate" dropdown where you specify the rate at which messages 
-are sent to the database. In the "Duration in Minutes" dropdown, you can select how many minutes
-the messaging will persist. In the "Message" box, you enter a message that will be sent to the database.
-The message is optional. At the bottom of the webpage you will see "Start" and "Stop" buttons that you use
+Looking at your deployed application, you will see a **Messaging Rate** dropdown where you specify the rate at which messages 
+are sent to the database. In the **Duration in Minutes** dropdown, you can select how many minutes
+the automated messaging will persist. In the **Message** box, you can enter a message that will be sent to the database.
+The message is optional when sending messages using the **Start** button. At the bottom of the webpage you will see **Start** and **Stop** buttons that you use
 to initiate and stop the messaging.
 	
-	3) In the "Messaging Rate" box put any message you would like to send.
-	4) Set the rate to "Medium".
-	5) Set your duration to "5" minutes.
-	6) Click "Start".
+* In the **Message** box put any message you would like to send.
+	* You may send individual messages by clicking **Send a Message**
+* Set the rate to "Medium".
+* Set your duration to "5" minutes.
+* Click **Start**.
 
 
-You have just succesfully started sending messages to the database. To see the messages populated, click on your
-"Cloudant" service in the Application's Dashboard. Click on the "Monitoring and Analytics" service in your
-application's Dashboard to see and utilize the information you learned in the "Monitoring and Analytics" document 
-referenced above. 
+You have just succesfully started sending messages to your web server. To see the messages populated, click on your
+Cloudant service in the application's dashboard. Navigate to the Monitoring and Analytics service in your
+application's dashboard to view the effects of the new workload on your application. 
+
+For more information on Monitoring and Analytics see the [getting started page](https://www.ng.bluemix.net/docs/#services/monana/index.html#gettingstartedtemplate).
 	
 
-## Test Auto-Scaling
+## Experimenting with Auto-Scaling
 
 We are now going to stress our application and monitor the Auto-Scaling service at work.
 	
 First we must become familiar with the service by reading through the Bluemix documentation on Auto-Scaling at 
 https://www.ng.bluemix.net/docs/#services/Auto-Scaling/index.html#autoscaling.
 
-	1) From your application's Dashboard select the "Auto-Scaling" Service.
+* From your application's Dashboard select the "Auto-Scaling" Service.
+	* here you can utilize the Auto-Scaling service shown in the document referenced above.
+* Create Auto-Scaling policy to do testing under the "Policy-Configuration" tab.
+	* note that in the Advanced Configuration options you can adjust the time it takes to scale your app.
 
 
-In here you can utilize the Auto-Scaling service shown in the document referenced above.
+Once we start sending messages to stress the server, we can monitor auto-scaling from the **Metric Statistics**
+and **Scaling History** tabs.
 
-	2) Create Auto-Scaling policy to do testing under the "Policy-Configuration" tab.
-
-![Example](images/policy.jpg)
-
-Once we start sending messages to stress the server, we can monitor auto-scaling from the "Metric Statistics"
-and "Scaling History" tabs.
-
-
-Start the stress so you can monitor auto-scaling from the 'Auto-Scaling' service.
-
-	1) Reload the webpage for the application by selecting one of the routes.
-	2) In the "Messaging Rate" box put any message you would like to send.
-	3) Set the rate to "High".
-	4) Set your duration to "5" minutes.
-	5) Click "Start".
+For more information on the Auto-Scaling service please [visit the documentation](https://www.ng.bluemix.net/docs/#services/Auto-Scaling/index.html#autoscaling)
 
 	
 ## DevOps Pipeline 
 
-Here, we are going do an overview of the DevOps Pipeline service Bluemix provides so you can become familiar
-how to utilize it for future changes to this or other applications.
-	
-	
+Here, we are going do a basic overview of the DevOps Pipeline service Bluemix provides.  The DevOps Pipline is located in the IBM DevOps Services page where you have your applications code stored.  
 
-## Getting Familiar with the Application
 
-In section we are going to review the actual code and what the app is doing in the background. 
+* Updating your manifest.yml
+	* In your web IDE, you'll find a **manifest.yml** file in your root directory.  This contains information that your Build and Deploy pipeline will need.
+	* Update your **host** to be your applications hostname.
+	* Update your **name** to be your applications name.
+* In your applications DevOps Services page, click on **Build and Deploy** in the top right, this will take you to the Build and Deploy Pipeline Welcome panel.
+* Adding a build stage to your pipline
+	* Click **ADD STAGE**
+	* Provide a name for the stage (Build) and select the SCM Repository for the Input Type.
+	* In the **Jobs** tab, click **ADD JOB** and select **Build**.
+	* Click **SAVE**
+* Adding a deploy stage to your pipline
+	* Click **ADD STAGE**
+	* Provide a name for the stage (Deploy)
+	* In the **Jobs** tab, click **ADD JOB** and select **Deploy**.
+	* Click **SAVE**
+* Adding a test stage to your pipline
+	* Click **ADD STAGE**
+	* Provide a name for the stage (Test)
+	* In the **Jobs** tab, click **ADD JOB** and select **Test**.
+	* In the **Test Command** window, add a simple test for your application.  
+		*For example: curl http://<your hostname>.mybluemix.net/
+	* Click **SAVE**
+* You may now start your Pipeline by pressing the play button on the Build stage. This will build, deploy and test that your application has succesfully launched.
+
 
 
 	
