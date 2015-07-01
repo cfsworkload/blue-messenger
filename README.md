@@ -63,6 +63,7 @@ You have successfully deployed and binded an instance of Cloudant NoSQL DB to yo
 At this point, we have our starter Node.js application with a binded instance of a Cloudant database. Using what you've learned, add the services **Monitoring and Analytics** and **Auto-Scaling** to your application.
 
 Once you have successfully bound "Monitoring and Analytics" and "Auto-Scaling" services to your web application your app's dashboard should appear like this:
+
 ![Example](images/dashboard-confirmation.jpg)
 
 ## Fork project to personal DevOps space 
