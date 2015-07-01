@@ -1,5 +1,5 @@
 # Workload - Scalable Web App
----	
+	
 
 ###Scalable Web Application example implemented in Cloud Foundry 
 
@@ -12,10 +12,10 @@ the Bluemix services "Monitoring and Analytics", "Autoscale", and "Cloudant NoSQ
 
 ## Introduction
 
-A messaging web application has been created so we can depoly it into our personal space
-after signing up for Bluemix and the DevOps service. We will attach the
-"Monitoring and Analytics", "Autoscale", and "Cloudant NoSQL DB" services and provide instructions
-for understanding how the application works and how to monitor the attached services.  
+A messaging web application has been created so you can depoly it into your personal space
+after signing up for Bluemix and the DevOps service. You will attach the
+**Monitoring and Analytics**, **Auto-Scaling**, and **Cloudant NoSQL DB** services to the application as well as learn how to begin using these services.
+
 
 ## Sign up for / Log into Bluemix and DevOps
 
@@ -25,143 +25,71 @@ For more information, reference the Bluemix getting started documents at -
 
 ## Create Node.js Application and Attach the Services
  
-Our first goal is to create a Node.js application through the Bluemix UI. Afterward, we will create and bind
-a Cloudant NoSQL Database. This will be used to store messages that we send. We will then create and bind the "Monitoring and Analytics"
-and "Autoscaling" services. Bluemix provides these services embedded in the Bluemix Service Catalog. Once we have created a Node.js application
-with these services, we will set out to fork (copy) the application's code and deploy it over the blank Node.js application.
+The goal is to create a Node.js application through the Bluemix UI. You will use the initial Node.js applicaiton to add Bluemix services.  Afterward, you will create and bind
+a Cloudant NoSQL Database. This will be used to store messages that we send. We will then create and bind the Monitoring and Analytics
+and Autoscaling services. Bluemix provides these services embedded in the Bluemix Service Catalog. Once we have created a Node.js application
+with these services, we will set out to fork (copy) the application's code and deploy it over the starter Node.js application.
 
-	1) Log into your Dashboard at https://console.ng.bluemix.net.
-    2) From the main dashboard page select "CREATE AN APP".
+* Log into your Dashboard at https://console.ng.bluemix.net.
+* From the Dashboard page select CREATE AN APP.
     
-![Example](images/createanapp.jpg)
-
-    
-This will open a window to select either "Web" or "Mobile".
+This will open a window to select either Web or Mobile.
 	
-	3) Select "Web".
-	4) In the next window, select "SDK for Node.js".
-	
-![Example](images/nodejs-1.jpg)
-
-	5) In the next window, select "Continue".
-	6) In the next window, where it says "App Name", give a name for your web application and select "FINISH".
+* Select **Web**.
+* In the next screen, select **SDK for Node.js**.
+* Now, where it says **App Name**, specify a name for your web application and take note for when you fork your project.
 	
 It may take a while for the application to be created and staged. Once it finishes staging, you will have succesfully
-created a blank Node.js application in Bluemix. You should now see the application in your main dashboard in the
-"Applications" category. We will now bind services to our blank Node.js application. 
+created a starter Node.js application in Bluemix. You should now see the application in your Dashboard in the
+"Applications" category. We will now bind services to our starter Node.js application. 
 
-	1) From your dashboard, select your application you just created.
-
-![Example](images/selectapp-1.jpg)
-
-This will take you into the application's personal dashboard where we can add/bind services.
-
-	2) In the application window select "ADD A SERVICE OR API".
-	
-![Example](images/addservice-1.jpg)
-
-
-The window that pops up is the Services Catalog. 
-
-	3) In the top search bar type "cloudant" and select "Cloudant NoSQL DB".
+* In the left sidebar, select Overview to take you into the application's dashboard where we can add/bind services.
+* Click **ADD A SERVICE OR API**. This directs you to the Services Catalog. 
+* In the top search bar, type "cloudant"
+* From the **Data Management** category, select **Cloudant NoSQL DB**.
 
 ![Example](images/cloudant.jpg)
 
 	
-This will bring up a box where you need to configure the Cloudant service.
+This will bring up a page where you will configure the Cloudant service.
 
-	 In "Space" select your the space in which your blank Node.js application sits.
-	 In "App" select your application.
-	 In "Service name" field put any name you want.
-	 In your "Selected Plan" select your desired plan.
-	 Select "CREATE".
+* Accept the default values.
+* Make note of your **Service name** that you will use later.
+* Click **CREATE**.
+* Restage your application when prompted.
 
-![Example](images/cloudant-1.jpg)
+You have successfully deployed and binded an instance of Cloudant NoSQL DB to your starter Node.js application. 
 
-You have successfully deployed and binded an instance of Cloudant NoSQL DB to your blank Node.js application. 
-For more information on Cloudant please see the docs at https://www.ng.bluemix.net/docs/#services/Cloudant/index.html#Cloudant.
+At this point, we have our starter Node.js application with a binded instance of a Cloudant database. Using what you've learned, add the services **Monitoring and Analytics** and **Auto-Scaling** to your application.
 
-At this point, we have our blank Node.js application with a binded instance of a Cloudant database. For this part of the tutorial, we will be adding
-"Monitoring and Analytics" and "Auto-Scaling" services to the application.
-
-	1) In the application window select "ADD A SERVICE OR API".
-
-![Example](images/addservice-2.jpg)
-
-
-This will bring up the Bluemix Services Catalog.
-	
-	2) In the top search bar type "Monitoring and Analytics" and select "Monitoring and Analytics".
-
-![Example](images/monitoring.jpg)
-
-This will open a window where you will need to provide information about where to attach the service.
-
-	 In "Space" field select your space where your blank Node.js application resides.
-	 In "App" field select your application.
-	 In "Selected Plan" field select your desired plan.
-	 Select "CREATE" and then select "RESTAGE" when a window pops up.
-	 (Your app may automatically restage.)
-	 
-![Example](images/createmonitoring.jpg)
- 
-You have now successfully attached the "Monitoring and Analytics" service to your web application.
-
-	1) Go back to your application page and select "ADD A SERVICE OR API". 
-	2) In the top search bar type "Auto-Scaling" and select "Auto-Scaling".
-
-![Example](images/autoscale.jpg)
-
-This will open a window where you will need to configure the service.
-
-	In "Space" select your space where your blank Node.js application resides.
-	In "App" select your application.
-	In "Selected Plan" select your desired plan.
-	Select "CREATE" and then select "RESTAGE" when a window pops up.
-	(Your app may automatically restage.)
-
-![Example](images/createautoscaling.jpg)
-	
-You have now successfully binded "Monitoring and Analytics" and "Auto-Scaling" services to your web application.
-
+Once you have successfully bound "Monitoring and Analytics" and "Auto-Scaling" services to your web application your app's dashboard should appear like this:
+![Example](images/dashboard-confirmation.jpg)
 
 ## Fork project to personal DevOps space 
 	
 Our next goal is to fork a publicly accessible repository hosted in http://hub.jazz.net into your 
 personal DevOps space. Once we do this, we will be able to deploy the code to Bluemix and spin
 up instances of the Web Application. 
-	
-	1) From https://hub.jazz.net/git/ank/Mosca-Cloudant select "Fork Project" in top right of the page.
 
-![Example](images/forkproject.jpg)
-
- A menu will pop up where you will need to provide infomation on where the code will be forked 
+* Navigate to [the tutorial's repository](https://hub.jazz.net/project/ank/Blue%20Messenger/overview)
+* In top right of the page, click **Fork Project**
+	* A menu will pop up where you will need to provide infomation on where the code will be forked 
 	to.
+* In **Name your project**, use name you chose for your starter Node.js app.
+* Choose the **Space** that your starter Node.js app was created in and click **CREATE**. 
 
-	In the first field "Name your project" name the project the same name you named your blank node.js app.
-	Check "Make it private" if you want the repo to be private; otherwise leave unchecked.
-	Keep "Make this a Bluemix Project" checked.
-	Select your Region, Organization, and Space as your blank Node.js app and select "Create". 
-
-
-![Example](images/create.jpg)
 
 You have successfully forked this application code to your personal Jazz Hub space.
 To find more about Bluemix's DevOps features reference the docs at 
 https://hub.jazz.net/docs.
 
-## Deploy to Bluemix through DevOps space
+## Deploy to Bluemix through DevOps Services
 
-Next, we will take the repository, with the application code we just foked, and deploy over the the blank Node.js 
-application we created. The services we created earlier will still be binded.
+You can now configure your application code for deployment to your own Bluemix environment.  You will be overwriting the deployed starter node application, taking advantage of the services you previously configured.
 
-	1) From the DevOps project page you just created, select "EDIT CODE" at the top right.
-
-![Example](images/editproject.jpg)
-
-In your "EDIT CODE" window  you will see the files that are contained in the application's code.
-
-	2) In your "EDIT CODE" window, click the drop-down menu, found above the code files, and select the pencil symbol to edit launch configuration.
+* On your DevOps Services project page, click **EDIT CODE** at the top right, this opens your web IDE.
+	* In your web IDE you will see the a copy of this README.md that you forked.
+* Click the drop-down menu, found above the code files, and select the pencil symbol to edit launch configuration.
 
 
 ![Example](images/editlaunch.jpg)
@@ -170,26 +98,25 @@ In your "EDIT CODE" window  you will see the files that are contained in the app
 A window will pop up and you will be required to enter information about where the code will be
 deployed to.
 
-	 In the "Launch Config Name*" field give a Config Name.
-	 In the "Target*" field select your app's region.
-	 In the "Organization*" field select your app's organization.
-	 In the "Space*" field select your app's Bluemix space.
-	 In the "Manifest File" field leave the default of "manifest.yml".
-	 In the "Application Name" field select the name of your blank Node.js application.
-	 In the "Host" field select the hostname you gave for your Node.js application.
-	 In the "Domain" field leave default at "mybluemix.net".
-	 Click "Save".
+* In the **Launch Config Name** field give a Config Name.
+* In the **Target** field select your app's region.
+* In the **Organization** field select your app's organization.
+* In the **Space** field select your app's Bluemix space.
+* In the **Manifest File** field leave the default of manifest.yml.
+* In the **Application Name** field select the name of your starter Node.js application.
+* In the **Host** field select the hostname you gave for your Node.js application.
+* In the **Domain** field leave default at mybluemix.net.
+* Click **Save**.
 
 ![Example](images/launchconfig.jpg)]
 
+* To the right of the configuration dropdown, click the **Play** button to deploy your application to Bluemix.
 
+* Navigate to your **Bluemix Dashboard** and select your application to view its deployment status.
+* Once your application is finished deploying, click on the **Routes** link to be navigated to your new web app.
 
-	3) In your "EDIT CODE" window, select the "Play" button to deploy your application to Bluemix.
+![Example](images/website.jpg)
 
-![Example](images/playbutton.jpg)
-
-Once you click "Deploy", Bluemix will reference the launch configurations you specified and read your
-manifest.yml in order to override your blank Node.js application.
 
 
 ## Monitoring Application Performance
@@ -199,17 +126,7 @@ web application.
 	
 For learning how to utilize the data provided in this service see
 https://www.ng.bluemix.net/docs/#services/monana/index.html#gettingstartedtemplate.
-	
-	1) Return to your application's dashboard and the top of the screen you will see the listed routes.
 
-![Example](images/routes.jpg)
-
-
-These are your application's publicly accessible DNS names that can be used to launch your app from a browser.
-	
-	2) Click on any one of your routes to load the "Blue Messenger" application.
-
-![Example](images/website.jpg)
 
 From the main page you will see a "Messaging Rate" dropdown where you specify the rate at which messages 
 are sent to the database. In the "Duration in Minutes" dropdown, you can select how many minutes
@@ -222,15 +139,11 @@ to initiate and stop the messaging.
 	5) Set your duration to "5" minutes.
 	6) Click "Start".
 
-![Example](images/mediumspam.jpg)
-
 
 You have just succesfully started sending messages to the database. To see the messages populated, click on your
 "Cloudant" service in the Application's Dashboard. Click on the "Monitoring and Analytics" service in your
-Application's Dashboard to see and utilize the information you learned in the "Monitoring and Analytics" document 
+application's Dashboard to see and utilize the information you learned in the "Monitoring and Analytics" document 
 referenced above. 
-
-![Example](images/monandcloud.jpg)
 	
 
 ## Test Auto-Scaling
@@ -240,9 +153,8 @@ We are now going to stress our application and monitor the Auto-Scaling service 
 First we must become familiar with the service by reading through the Bluemix documentation on Auto-Scaling at 
 https://www.ng.bluemix.net/docs/#services/Auto-Scaling/index.html#autoscaling.
 
-	1) From your application's dashboard select the "Auto-Scaling" Service.
+	1) From your application's Dashboard select the "Auto-Scaling" Service.
 
-![Example](images/auto-scale-1.jpg)
 
 In here you can utilize the Auto-Scaling service shown in the document referenced above.
 
@@ -253,7 +165,6 @@ In here you can utilize the Auto-Scaling service shown in the document reference
 Once we start sending messages to stress the server, we can monitor auto-scaling from the "Metric Statistics"
 and "Scaling History" tabs.
 
-![Example](images/metrics.jpg)
 
 Start the stress so you can monitor auto-scaling from the 'Auto-Scaling' service.
 
@@ -262,8 +173,6 @@ Start the stress so you can monitor auto-scaling from the 'Auto-Scaling' service
 	3) Set the rate to "High".
 	4) Set your duration to "5" minutes.
 	5) Click "Start".
-
-![Example](images/pressstart.jpg)
 
 	
 ## DevOps Pipeline 
