@@ -18,10 +18,11 @@ var dbCredentials = {
 	dbName : 'my_sample_db'
 };
 
-
+//Get the port and host name from the environment variables
 var port = (process.env.VCAP_APP_PORT || 3000);
 var host = (process.env.VCAP_APP_HOST || '0.0.0.0');
 
+//setup cloudant db
 function initDBConnection() {
 	
 	if(process.env.VCAP_SERVICES) {
@@ -94,7 +95,7 @@ app.get('/', function(req, res) {
         res.sendfile(__dirname + '/public/index.html');
     });
     
-    
+// Create the MQTT server    
 var mqttServe = new mosca.Server({});
 
 mqttServe.on('clientConnected', function(client) {
@@ -118,21 +119,13 @@ mqttServe.on('published', function(packet, client){
 
 });
 
-//// get the app environment from Cloud Foundry
-//var appEnv = cfenv.getAppEnv();
-//
-//// start server on the specified port and binding host
-//app.listen(appEnv.port, appEnv.bind, function() {
-//
-//	// print a message when the server starts listening
-//  console.log("server starting on " + appEnv.url);
-//});
 
+//Create http server and attach the MQTT server to the websocket
 var httpServer = http.createServer(app);
 mqttServe.attachHttpServer(httpServer);
 
 
-
+//begin listening
 httpServer.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
