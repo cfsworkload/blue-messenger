@@ -20,7 +20,7 @@ as well as learn how to begin using these services.
 
 ## Sign up for / Log into Bluemix and DevOps
 
-Sign up for Bluemix at https://console.ng.bluemix.net and DevOps Services at https://hub.jazz/net.
+Sign up for Bluemix at https://console.ng.bluemix.net and DevOps Services at https://hub.jazz.net.
 When you sign up, you'll create an IBM ID, create an alias, and register with Bluemix.
 
 
@@ -33,36 +33,32 @@ Analytics and Autoscaling Services. Bluemix provides these services embedded in 
 Catalog. Once we have created a Node.js application with these services, we will set out to fork (copy)
 the application's code and deploy it over the starter Node.js application.
 
-* Log into your Dashboard at https://console.ng.bluemix.net.
-* From the Dashboard page select **CREATE AN APP**.
-    
-This will open a window to select either Web or Mobile.
-	
-* Select **Web**.
-* In the next screen, select **SDK for Node.js**.
-* Now, where it says **App Name**, specify a name for your web application and take note for 
+1. Log into your Dashboard at https://console.ng.bluemix.net.
+2. From the Dashboard page select **CREATE AN APP**. This will open a window to select either Web or Mobile.
+3. Select **Web**.
+4. In the next screen, select **SDK for Node.js**.
+5. Now, where it says **App Name**, specify a name for your web application and take note for 
 when you fork your project.
-	
-It may take a while for the application to be created and staged. Once it finishes staging,
+
+    It may take a while for the application to be created and staged. Once it finishes staging,
 you will have succesfully created a starter Node.js application in Bluemix. You should now see the
 application in your Dashboard in the **Applications** category. We will now bind services to our starter
-Node.js application. 
+Node.js application.
 
-* In the left sidebar, select Overview to take you into the application's dashboard where we can
+6. In the left sidebar, select Overview to take you into the application's dashboard where we can
 add/bind services.
-* Click **ADD A SERVICE OR API**. This directs you to the Services Catalog. 
-* In the top search bar, type "cloudant"
-* From the **Data Management** category, select **Cloudant NoSQL DB**.
+7. Click **ADD A SERVICE OR API**. This directs you to the Services Catalog. 
+8. In the top search bar, type "cloudant."
+9. From the **Data Management** category, select **Cloudant NoSQL DB**.
 
-![Example](images/cloudant.jpg)
+    ![Example](images/cloudant.jpg)
 
-	
-This will bring up a page where you will configure the Cloudant service.
+    This will bring up a page where you will configure the Cloudant service.
 
-* Accept the default values.
-* Make note of your **Service name** that you will use later.
-* Click **CREATE**.
-* Restage your application when prompted.
+10. Accept the default values.
+11. Make note of your **Service name** that you will use later.
+12. Click **CREATE**.
+13. Restage your application when prompted.
 
 You have successfully deployed and bound an instance of Cloudant NoSQL DB to your starter Node.js
 application. 
@@ -72,7 +68,7 @@ Using what you've learned, add the services **Monitoring and Analytics** and **A
 application.
 
 Once you have successfully bound "Monitoring and Analytics" and "Auto-Scaling" services to your web
-application your app's dashboard should appear like this:
+application, your app's dashboard should appear like this:
 
 ![Example](images/dashboard-confirmation.jpg)
 
@@ -82,12 +78,12 @@ Our next goal is to fork a publicly accessible repository hosted in http://hub.j
 personal DevOps space. Once we do this, we will be able to deploy the code to Bluemix and spin
 up instances of the Web Application. 
 
-* Navigate to [the tutorial's repository](https://hub.jazz.net/project/ank/Blue%20Messenger/overview)
-* In top right of the page, click **Fork Project**
+1. Navigate to [the tutorial's repository](https://hub.jazz.net/project/ank/Blue%20Messenger/overview).
+2. In top right of the page, click **Fork Project**
 	* A menu will pop up where you will need to provide infomation on where the code will be forked 
 	to.
-* In **Name your project**, use the name you chose for your starter Node.js app.
-* Choose the **Space** that your starter Node.js app was created in and click **CREATE**. 
+3. In **Name your project**, use the name you chose for your starter Node.js app.
+4. Choose the **Space** that your starter Node.js app was created in and click **CREATE**. 
 
 
 You have successfully forked this application code to your personal Jazz Hub space.
@@ -100,33 +96,31 @@ You can now configure your application code for deployment to your own Bluemix e
 You will be overwriting the deployed starter Node application, taking advantage of the services
 you previously configured.
 
-* On your DevOps Services project page, click **EDIT CODE** at the top right. This opens your web IDE.
-	* In your web ID,E you will see the a forked copy of this README.md.
-* Click the drop-down menu, found above the code files, and select the pencil symbol to edit launch configuration.
+1. On your DevOps Services project page, click **EDIT CODE** at the top right. This opens your web IDE.
+	* In your web IDE you will see the a forked copy of this README.md.
+2. Click the drop-down menu, found above the code files, and select the pencil symbol to edit launch configuration.
+  
+    ![Example](images/editlaunch.jpg)
 
-
-![Example](images/editlaunch.jpg)
-
-
-A window will pop up and you will be required to enter information about where the code will be
+     A window will pop up and you will be required to enter information about where the code will be
 deployed to.
 
-* In the **Launch Config Name** field, give a Config Name.
-* In the **Target** field, select your app's region.
-* In the **Organization** field, select your app's organization.
-* In the **Space** field, select your app's Bluemix space.
-* In the **Manifest File** field, leave the default of manifest.yml.
-* In the **Application Name** field, select the name of your starter Node.js application.
-* In the **Host** field, select the hostname you gave for your Node.js application.
-* In the **Domain** field, leave default at mybluemix.net.
-* Click **Save**.
+3. In the **Launch Config Name** field, give a Config Name.
+4. In the **Target** field, select your app's region.
+5. In the **Organization** field, select your app's organization.
+6. In the **Space** field, select your app's Bluemix space.
+7. In the **Manifest File** field, leave the default of manifest.yml.
+8. In the **Application Name** field, select the name of your starter Node.js application.
+9. In the **Host** field, select the hostname you gave for your Node.js application.
+10. In the **Domain** field, leave default at mybluemix.net.
+11. Click **Save**.
 
-![Example](images/launchconfig.jpg)]
+    ![Example](images/launchconfig.jpg)
 
-* To the right of the configuration dropdown, click the **Play** button to deploy your application
+12. To the right of the configuration dropdown, click the **Play** button to deploy your application
 to Bluemix.
-* Navigate to your **Bluemix Dashboard** and select your application to view its deployment status.
-* Once your application is finished deploying, click on the **Routes** link to be navigated to your
+13. Navigate to your **Bluemix Dashboard** and select your application to view its deployment status.
+14. Once your application is finished deploying, click on the **Routes** link to be navigated to your
 new web app.
 
 ![Example](images/website.jpg)
@@ -145,11 +139,11 @@ that will be sent to the database. The message is optional when sending messages
 button. At the bottom of the webpage you will see **Start** and **Stop** buttons that you use to initiate
 and stop the messaging.
 	
-* In the **Message** box put any message you would like to send.
-	* You may send individual messages by clicking **Send a Message**
-* Set the rate to **Medium**.
-* Set your duration to **5** minutes.
-* Click **Start**.
+1. In the **Message** box put any message you would like to send.
+	* You may send individual messages by clicking **Send a Message**.
+2. Set the rate to **Medium**.
+3. Set your duration to **5** minutes.
+4. Click **Start**.
 
 
 You have just succesfully started sending messages to your web server. To see the messages populated,
@@ -165,9 +159,9 @@ For more information on Monitoring and Analytics see the
 We are now going to stress our application and monitor the Auto-Scaling service at work.
 	
 
-* From your application's Dashboard select the **Auto-Scaling** Service.
+1. From your application's Dashboard select the **Auto-Scaling** Service.
 	* Here you can utilize the Auto-Scaling service shown in the document referenced above.
-* Create Auto-Scaling policy to do testing under the **Policy-Configuration** tab.
+2. Create Auto-Scaling policy to do testing under the **Policy-Configuration** tab.
 	* Note that in the Advanced Configuration options you can adjust the time it takes to scale your app.
 
 
@@ -184,31 +178,31 @@ Here, we are going do a basic overview of the DevOps Pipeline service Bluemix pr
 Pipline is located in the IBM DevOps Services page where you have your applications code stored.  
 
 
-* Update your manifest.yml.
-	* In your web IDE, you'll find a **manifest.yml** file in your root directory. This contains
+1. Update your manifest.yml.
+	1. In your web IDE, you'll find a **manifest.yml** file in your root directory. This contains
 information that your Build and Deploy pipeline will need.
-	* Update your **host** to be your applications hostname.
-	* Update your **name** to be your applications name.
-* In your applications DevOps Services page, click on **Build and Deploy** in the top right, this will
+	2. Update your **host** to be your application's hostname.
+	3. Update your **name** to be your application's name.
+2. In your applications DevOps Services page, click on **Build and Deploy** in the top right. This will
 take you to the Build and Deploy Pipeline Welcome panel.
-* Add a build stage to your pipline.
-	* Click **ADD STAGE**.
-	* Provide a name for the stage (Build) and select the SCM Repository for the Input Type.
-	* In the **Jobs** tab, click **ADD JOB** and select **Build**.
-	* Click **SAVE**.
-* Add a deploy stage to your pipline.
-	* Click **ADD STAGE**.
-	* Provide a name for the stage (Deploy).
-	* In the **Jobs** tab, click **ADD JOB** and select **Deploy**.
-	* Click **SAVE**.
-* Add a test stage to your pipline.
-	* Click **ADD STAGE**
-	* Provide a name for the stage (Test).
-	* In the **Jobs** tab, click **ADD JOB** and select **Test**.
-	* In the **Test Command** window, add a simple test for your application.  
-		*For example: `curl http://<your hostname>.mybluemix.net/`
-	* Click **SAVE**.
-* You may now start your Pipeline by pressing the play button on the Build stage. This will build,
+3.  Add a build stage to your pipline.
+	1. Click **ADD STAGE**.
+	2. Provide a name for the stage (Build) and select the SCM Repository for the Input Type.
+	3. In the **Jobs** tab, click **ADD JOB** and select **Build**.
+	4. Click **SAVE**.
+4. Add a deploy stage to your pipline.
+	1. Click **ADD STAGE**.
+	2. Provide a name for the stage (Deploy).
+	3. In the **Jobs** tab, click **ADD JOB** and select **Deploy**.
+	4. Click **SAVE**.
+5. Add a test stage to your pipline.
+	1. Click **ADD STAGE**
+	2. Provide a name for the stage (Test).
+	3. In the **Jobs** tab, click **ADD JOB** and select **Test**.
+	4. In the **Test Command** window, add a simple test for your application.  
+		* For example: `curl http://<your hostname>.mybluemix.net/`
+	5. Click **SAVE**.
+6. You may now start your Pipeline by pressing the play button on the Build stage. This will build,
 deploy, and test your application.
 
 
