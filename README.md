@@ -174,35 +174,57 @@ For more information on the Auto-Scaling service please
 	
 ## DevOps Pipeline 
 
-Here, we are going do a basic overview of the DevOps Pipeline service Bluemix provides. The DevOps
-Pipline is located in the IBM DevOps Services page where you have your applications code stored.  
-
+This section describes how to setup a blue to green deployment using the DevOps Pipeline. Once set up, any changes pushed to your repository will automatically be deployed
+to the production application in a zero downtime fashion. New instances of the application will be created to match the existing application.  The appropriate services will then be bound to the 
+new application and the applicaitons workload will be switched to the new deployment.  The old iteration of the application is then deleted.  All of this this is done utilizing Cloud Foundry commands
+found in the **deploy.sh** script in the root directory of the web IDE.
 
 1. Update your manifest.yml.
 	1. In your web IDE, you'll find a **manifest.yml** file in your root directory. This contains
 information that your Build and Deploy pipeline will need.
 	2. Update your **host** to be your application's hostname.
 	3. Update your **name** to be your application's name.
-2. In your applications DevOps Services page, click on **Build and Deploy** in the top right. This will
-take you to the Build and Deploy Pipeline Welcome panel.
-3.  Add a build stage to your pipline.
+2. Copy to clipboard the contents of **deploy.sh**
+	1. In your web IDE, you'll find a **deploy.sh** file in your root directory. This contains
+    information that your zero downtime deployment will need.
+	2. Highlight this entire script and right click twice and select **copy** to copy to clipboard. We will paste this information in the deploy script section of
+	our pipeline later.
+3. In your application's DevOps Services page, click on **Build and Deploy** in the top right. This will take you to the Build and Deploy Pipeline Welcome panel.
+4.  Add a build stage to your pipline.
 	1. Click **ADD STAGE**.
 	2. Provide a name for the stage (Build) and select the SCM Repository for the Input Type.
-	3. In the **Jobs** tab, click **ADD JOB** and select **Build**.
-	4. Click **SAVE**.
-4. Add a deploy stage to your pipline.
+	3. Under **Stage Trigger** select ** Run jobs whenever a change is pushed to GIT**
+	4. In the **Jobs** tab, click **ADD JOB** and select **Build**.
+	5. Click **SAVE**.
+5. Add a deploy stage to your pipeline.
 	1. Click **ADD STAGE**.
-	2. Provide a name for the stage (Deploy).
-	3. In the **Jobs** tab, click **ADD JOB** and select **Deploy**.
-	4. Click **SAVE**.
-5. Add a test stage to your pipline.
+	2. Provide a name for the stage (Deploy) and select the Build Artifacts for the Input Type.
+	3. Under **Stage Trigger** select ** Run jobs when the previous stage is completed**.
+	4. In the **Jobs** tab, click **ADD JOB** and select **Deploy**.
+	5. In the **Deploy Script** box, highlight everything and right click paste the contents of the **deploy.sh** file from earlier.
+	6. In the **ENVIRONMENT PROPERTIES** tab, click **+ADD PROPERTY** and select **Text Property**.
+	7. In the newly created field where it says **Name**, type **ROUTES** and in the **Value** box type the **HOST:DOMAIN** of your **Blue Messenger** application.
+	8. Click **ADD PROPERTY** and select **Text Property** again.
+	9. In the **Name** box type **SERVICES** and in the **Value** box list the name of the services attached to your current Blue Messenger application separated by commas. "no spaces" are allowed after the comma separating the services.
+	10. Click **SAVE**.
+	
+   ![EXAMPLE](images/deploy.jpg)
+6. Add a test stage to your pipline.
 	1. Click **ADD STAGE**
 	2. Provide a name for the stage (Test).
-	3. In the **Jobs** tab, click **ADD JOB** and select **Test**.
-	4. In the **Test Command** window, add a simple test for your application.  
+	3. Under **Stage Trigger** select ** Run jobs when the previous stage is completed**.
+	4. In the **Jobs** tab, click **ADD JOB** and select **Test**.
+	5. In the **Test Command** window, add a simple test for your application.  
 		* For example: `curl http://<your hostname>.mybluemix.net/`
-	5. Click **SAVE**.
-6. You may now start your Pipeline by pressing the play button on the Build stage. This will build,
-deploy, and test your application.
+	6. Click **SAVE**.
+7. Make change to application to show change after deployment
+	1. Add the lines of code, found below, to the bottom of your /public/stylesheets/style.css in your web IDE. This change will make the corners of the buttons pointed and not curved.
 
+			.btn-lg{
+	    	    border-radius: 0;
+			}	
+		
+8. To demonstrate zero downtime deployment press the play button on the Build stage. This will build,
+deploy, and test your application. Spam the database within your Blue-Messenger application, while
+the deployment stage is running. You can monitor the deployment stage by clicking ** View logs and history**. Once the pipeline has completed refresh your application in the browser and you will see the change to the buttons' edges. 
 
