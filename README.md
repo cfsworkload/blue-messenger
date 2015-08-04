@@ -1,7 +1,7 @@
 # Workload - Scalable Web App
-	
 
-###Scalable Web Application Example Implemented in Cloud Foundry 
+
+###Scalable Web Application Example Implemented in Cloud Foundry
 
 
 The messaging web application utilizes and demonstrates
@@ -25,7 +25,7 @@ When you sign up, you'll create an IBM ID, create an alias, and register with Bl
 
 
 ## Create Node.js Application and Attach the Services
- 
+
 The goal is to create a Node.js application through the Bluemix UI. You will use the initial Node.js
 application to add Bluemix services.  You will create and bind a Cloudant NoSQL Database.
 This will be used to store messages that we send. We will then create and bind the Monitoring and
@@ -37,7 +37,7 @@ the application's code and deploy it over the starter Node.js application.
 2. From the Dashboard page select **CREATE AN APP**. This will open a window to select either Web or Mobile.
 3. Select **Web**.
 4. In the next screen, select **SDK for Node.js**.
-5. Now, where it says **App Name**, specify a name for your web application and take note for 
+5. Now, where it says **App Name**, specify a name for your web application and take note for
 when you fork your project.
 
     It may take a while for the application to be created and staged. Once it finishes staging,
@@ -47,7 +47,7 @@ Node.js application.
 
 6. In the left sidebar, select Overview to take you into the application's dashboard where we can
 add/bind services.
-7. Click **ADD A SERVICE OR API**. This directs you to the Services Catalog. 
+7. Click **ADD A SERVICE OR API**. This directs you to the Services Catalog.
 8. In the top search bar, type "cloudant."
 9. From the **Data Management** category, select **Cloudant NoSQL DB**.
 
@@ -61,7 +61,7 @@ add/bind services.
 13. Restage your application when prompted.
 
 You have successfully deployed and bound an instance of Cloudant NoSQL DB to your starter Node.js
-application. 
+application.
 
 At this point, we have our starter Node.js application with a binded instance of a Cloudant database.
 Using what you've learned, add the services **Monitoring and Analytics** and **Auto-Scaling** to your
@@ -72,22 +72,22 @@ application, your app's dashboard should appear like this:
 
 ![Example](images/dashboard-confirmation.jpg)
 
-## Fork Project to a Personal DevOps Space 
-	
-Our next goal is to fork a publicly accessible repository hosted in http://hub.jazz.net into your 
+## Fork Project to a Personal DevOps Space
+
+Our next goal is to fork a publicly accessible repository hosted in http://hub.jazz.net into your
 personal DevOps space. Once we do this, we will be able to deploy the code to Bluemix and spin
-up instances of the Web Application. 
+up instances of the Web Application.
 
 1. Navigate to [the tutorial's repository](https://hub.jazz.net/project/ank/Blue%20Messenger/overview).
 2. In top right of the page, click **Fork Project**
-	* A menu will pop up where you will need to provide infomation on where the code will be forked 
+	* A menu will pop up where you will need to provide infomation on where the code will be forked
 	to.
 3. In **Name your project**, use the name you chose for your starter Node.js app.
-4. Choose the **Space** that your starter Node.js app was created in and click **CREATE**. 
+4. Choose the **Space** that your starter Node.js app was created in and click **CREATE**.
 
 
 You have successfully forked this application code to your personal Jazz Hub space.
-To find more about Bluemix's DevOps features reference the docs at 
+To find more about Bluemix's DevOps features reference the docs at
 https://hub.jazz.net/docs.
 
 ## Deploy to Bluemix through DevOps Services
@@ -99,7 +99,7 @@ you previously configured.
 1. On your DevOps Services project page, click **EDIT CODE** at the top right. This opens your web IDE.
 	* In your web IDE you will see the a forked copy of this README.md.
 2. Click the drop-down menu, found above the code files, and select the pencil symbol to edit launch configuration.
-  
+
     ![Example](images/editlaunch.jpg)
 
      A window will pop up and you will be required to enter information about where the code will be
@@ -138,7 +138,7 @@ how many minutes the automated messaging will persist. In the **Message** box, y
 that will be sent to the database. The message is optional when sending messages using the **Start**
 button. At the bottom of the webpage you will see **Start** and **Stop** buttons that you use to initiate
 and stop the messaging.
-	
+
 1. In the **Message** box put any message you would like to send.
 	* You may send individual messages by clicking **Send a Message**.
 2. Set the rate to **Medium**.
@@ -148,16 +148,16 @@ and stop the messaging.
 
 You have just succesfully started sending messages to your web server. To see the messages populated,
 click on your Cloudant service in the application's dashboard. Navigate to the Monitoring and Analytics
-service in your application's dashboard to view the effects of the new workload on your application. 
+service in your application's dashboard to view the effects of the new workload on your application.
 
 For more information on Monitoring and Analytics see the
 [getting started page](https://www.ng.bluemix.net/docs/#services/monana/index.html#gettingstartedtemplate).
-	
+
 
 ## Experimenting with Auto-Scaling
 
 We are now going to stress our application and monitor the Auto-Scaling service at work.
-	
+
 
 1. From your application's Dashboard select the **Auto-Scaling** Service.
 	* Here you can utilize the Auto-Scaling service shown in the document referenced above.
@@ -171,12 +171,12 @@ Statistics** and **Scaling History** tabs.
 For more information on the Auto-Scaling service please
 [visit the documentation](https://www.ng.bluemix.net/docs/#services/Auto-Scaling/index.html#autoscaling).
 
-	
-## DevOps Pipeline 
 
-This section describes how to setup a blue to green deployment using the DevOps Pipeline. Once set up, any changes pushed to your repository will automatically be deployed
-to the production application in a zero downtime fashion. New instances of the application will be created to match the existing application.  The appropriate services will then be bound to the 
-new application and the applicaitons workload will be switched to the new deployment.  The old iteration of the application is then deleted.  All of this this is done utilizing Cloud Foundry commands
+## DevOps Pipeline
+
+This section describes how to deploy updates to the app with zero downtime using the DevOps Pipeline. Once set up, any changes pushed to your repository will automatically be deployed
+to the production application. New instances of the application will be created to match the existing application.  The appropriate services will then be bound to the
+new application and the applications workload will be switched to the new deployment.  The old iteration of the application is then deleted.  All of this this is done utilizing Cloud Foundry commands
 found in the **deploy.sh** script in the root directory of the web IDE.
 
 1. Update your manifest.yml.
@@ -184,16 +184,16 @@ found in the **deploy.sh** script in the root directory of the web IDE.
 information that your Build and Deploy pipeline will need.
 	2. Update your **host** to be your application's hostname.
 	3. Update your **name** to be your application's name.
-2. Copy to clipboard the contents of **deploy.sh**
+2. Copy to clipboard the contents of **deploy.sh**.
 	1. In your web IDE, you'll find a **deploy.sh** file in your root directory. This contains
     information that your zero downtime deployment will need.
 	2. Highlight this entire script and right click twice and select **copy** to copy to clipboard. We will paste this information in the deploy script section of
 	our pipeline later.
 3. In your application's DevOps Services page, click on **Build and Deploy** in the top right. This will take you to the Build and Deploy Pipeline Welcome panel.
-4.  Add a build stage to your pipline.
+4.  Add a build stage to your pipeline.
 	1. Click **ADD STAGE**.
 	2. Provide a name for the stage (Build) and select the SCM Repository for the Input Type.
-	3. Under **Stage Trigger** select ** Run jobs whenever a change is pushed to GIT**
+	3. Under **Stage Trigger** select **Run jobs whenever a change is pushed to GIT**.
 	4. In the **Jobs** tab, click **ADD JOB** and select **Build**.
 	5. Click **SAVE**.
 5. Add a deploy stage to your pipeline.
@@ -207,24 +207,23 @@ information that your Build and Deploy pipeline will need.
 	8. Click **ADD PROPERTY** and select **Text Property** again.
 	9. In the **Name** box type **SERVICES** and in the **Value** box list the name of the services attached to your current Blue Messenger application separated by commas. "no spaces" are allowed after the comma separating the services.
 	10. Click **SAVE**.
-	
+
    ![EXAMPLE](images/deploy.jpg)
 6. Add a test stage to your pipline.
-	1. Click **ADD STAGE**
+	1. Click **ADD STAGE**.
 	2. Provide a name for the stage (Test).
-	3. Under **Stage Trigger** select ** Run jobs when the previous stage is completed**.
+	3. Under **Stage Trigger** select **Run jobs when the previous stage is completed**.
 	4. In the **Jobs** tab, click **ADD JOB** and select **Test**.
 	5. In the **Test Command** window, add a simple test for your application.  
 		* For example: `curl http://<your hostname>.mybluemix.net/`
 	6. Click **SAVE**.
-7. Make change to application to show change after deployment
+7. Make change to application to show change after deployment.
 	1. Add the lines of code, found below, to the bottom of your /public/stylesheets/style.css in your web IDE. This change will make the corners of the buttons pointed and not curved.
 
 			.btn-lg{
 	    	    border-radius: 0;
-			}	
-		
+			}
+
 8. To demonstrate zero downtime deployment press the play button on the Build stage. This will build,
 deploy, and test your application. Spam the database within your Blue-Messenger application, while
-the deployment stage is running. You can monitor the deployment stage by clicking ** View logs and history**. Once the pipeline has completed refresh your application in the browser and you will see the change to the buttons' edges. 
-
+the deployment stage is running. You can monitor the deployment stage by clicking **View logs and history**. Once the pipeline has completed refresh your application in the browser and you will see the change to the buttons' edges. 
