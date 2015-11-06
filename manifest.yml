@@ -1,8 +1,22 @@
+---
+declared-services:
+  bm-auto-scaling:
+    label: Auto-Scaling
+    plan: free
+  bm-cloudant:
+    label: cloudantNoSQLDB
+    plan: Shared
+  bm-monitoring-analytics:
+    label: MonitoringAndAnalytics
+    plan: Free
 applications:
 - disk_quota: 1024M
-  host: webapp-hdn
-  name: Webapp HDN
-  path: .
+  name: blue-messenger-cfs
   domain: mybluemix.net
+  path: .
   instances: 1
   memory: 512M
+  services:
+  - bm-auto-scaling
+  - bm-cloudant
+  - bm-monitoring-analytics
