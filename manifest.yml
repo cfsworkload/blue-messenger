@@ -1,22 +1,7 @@
 ---
-declared-services:
-  bm-monitoring:
-    label: MonitoringAndAnalytics
-    plan: Free
-  bm-auto-scaling:
-    label: Auto-Scaling
-    plan: free
-  bm-cloudant:
-    label: cloudantNoSQLDB
-    plan: Shared
 applications:
 - disk_quota: 1024M
   name: blue-messenger
   path: .
   instances: 1
   memory: 512M
-  services:
-    - bm-monitoring
-    - bm-auto-scaling
-    - bm-cloudant
-  host: blue-messenger
