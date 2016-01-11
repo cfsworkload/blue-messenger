@@ -1,7 +1,7 @@
 ---
 applications:
 - disk_quota: 1024M
-  name: blue-messenger
+  name: blue-messenger-ac
   path: .
   instances: 1
   memory: 512M

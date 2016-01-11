@@ -45,7 +45,7 @@ stages:
       if [ -z "$name" ]
       then
         echo "No name found"
-        cf create-service MonitoringAndAnalytics free BlueMessenger-monitoringandanalytics
+        cf create-service MonitoringAndAnalytics Free BlueMessenger-monitoringandanalytics
         cf bind-service "${CF_APP}" BlueMessenger-monitoringandanalytics
       else
         echo "$name is the MonitoringAndAnalytics name"
