@@ -28,7 +28,7 @@ stages:
     script: |-
       #!/bin/bash
 
-      cf push "${CF_APP}" -i 1 -d mybluemix.net -n ${CF_APP} --no-start
+      cf push "${CF_APP}" -i 1 -n ${CF_APP} --no-start
 
       name=`cf services | grep Auto-Scaling | awk '{print $1}'`
       if [ -z "$name" ]
