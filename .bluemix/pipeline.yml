@@ -30,18 +30,13 @@ stages:
 
       cf push "${CF_APP}" -i 1 -n ${CF_APP} --no-start
 
-      name=`cf services | grep Auto-Scaling | awk '{print $1}'`
-      if [ -z "$name" ]
-      then
-        echo "No name found"
-        cf create-service Auto-Scaling free BlueMessenger-autoscaling
-        cf bind-service "${CF_APP}" BlueMessenger-autoscaling
-      else
-        echo "$name is the Auto-Scaling name"
-        cf bind-service "${CF_APP}" $name
-      fi
 
+      cf create-service Auto-Scaling free BlueMessenger-autoscaling
+      cf bind-service "${CF_APP}" BlueMessenger-autoscaling
+
+      number=`cf services | head -n 4 | tail -n 1 | awk -F"service" '{print length($1)}'`
       name=`cf services | grep MonitoringAndAnalytics | awk '{print $1}'`
+      name=${name:0:$number}
       if [ -z "$name" ]
       then
         echo "No name found"
@@ -49,7 +44,7 @@ stages:
         cf bind-service "${CF_APP}" BlueMessenger-monitoringandanalytics
       else
         echo "$name is the MonitoringAndAnalytics name"
-        cf bind-service "${CF_APP}" $name
+        cf bind-service "${CF_APP}" "$name"
       fi
 
       cf create-service cloudantNoSQLDB Shared BlueMessenger-cloudant
