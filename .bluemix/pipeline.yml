@@ -35,8 +35,8 @@ stages:
       cf bind-service "${CF_APP}" BlueMessenger-autoscaling
 
       number=`cf services | head -n 4 | tail -n 1 | awk -F"service" '{print length($1)}'`
-      name=`cf services | grep MonitoringAndAnalytics | awk '{print $1}'`
-      name=${name:0:$number}
+      name=`cf services | grep MonitoringAndAnalytics`
+      name=`echo ${name:0:$number} | sed 's/ *$//g'`
       if [ -z "$name" ]
       then
         echo "No name found"
