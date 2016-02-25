@@ -1,5 +1,5 @@
 {
-	"name": "Mosca-Cloudant",
+	"name": "blue-messenger",
 	"version": "0.0.1",
 	"description": "A simple nodejs app for Bluemix",
 	"scripts": {
@@ -15,5 +15,15 @@
         "fs": "*",
         "cloudant": "*"
 	},
-	"repository": {}
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/cfsworkload/blue-messenger.git"
+  },
+	"author": "IBM Corp.",
+    "contributors": [
+        {
+          "name": "Anthony Kambalouris",
+          "email": "ank@us.ibm.com"
+        }
+    ]
 }
