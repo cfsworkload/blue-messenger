@@ -8,41 +8,18 @@ var express = require('express');
 var http = require('http');
 var mosca = require('mosca');
 var fs = require('fs');
-
+var optional = require('optional');
+var appEnv = require('cfenv').getAppEnv({vcap: optional('./local-vcap.json')});
 
 var db;
 var cloudant;
-var dbCredentials = {
-	dbName : 'my_sample_db'
-};
 
-//Get the port and host name from the environment variables
-var port = (process.env.VCAP_APP_PORT || 3000);
-var host = (process.env.VCAP_APP_HOST || '0.0.0.0');
+var dbCredentials = appEnv.services.cloudantNoSQLDB[0].credentials; // first instance with this label
+
+dbCredentials.dbName = 'my_sample_db';
 
 //setup cloudant db
 function initDBConnection() {
-	
-	if(process.env.VCAP_SERVICES) {
-		var vcapServices = JSON.parse(process.env.VCAP_SERVICES);
-		if(vcapServices.cloudantNoSQLDB) {
-			dbCredentials.host = vcapServices.cloudantNoSQLDB[0].credentials.host;
-			dbCredentials.port = vcapServices.cloudantNoSQLDB[0].credentials.port;
-			dbCredentials.user = vcapServices.cloudantNoSQLDB[0].credentials.username;
-			dbCredentials.password = vcapServices.cloudantNoSQLDB[0].credentials.password;
-			dbCredentials.url = vcapServices.cloudantNoSQLDB[0].credentials.url;
-		}
-		console.log('VCAP Services: '+JSON.stringify(process.env.VCAP_SERVICES));
-	}
-    else{
-            dbCredentials.host = "ffe37731-0505-4683-96a8-87d02a33e03e-bluemix.cloudant.com";
-			dbCredentials.port = 443;
-			dbCredentials.user = "ffe37731-0505-4683-96a8-87d02a33e03e-bluemix";
-			dbCredentials.password = "c7003d0b156d9c4ce856c4e6b4427f3b576c7ea6229235f0369ada1ed47b159c";
-			dbCredentials.url = "https://ffe37731-0505-4683-96a8-87d02a33e03e-bluemix:c7003d0b156d9c4ce856c4e6b4427f3b576c7ea6229235f0369ada1ed47b159c@ffe37731-0505-4683-96a8-87d02a33e03e-bluemix.cloudant.com";
-        
-    }
-
 	cloudant = require('cloudant')(dbCredentials.url);
 	
 	//check if DB exists if not create
@@ -58,7 +35,7 @@ initDBConnection();
 // create a new express server
 var app = express();
 
-app.set('port', port);
+app.set('port', appEnv.port);
 app.set('view engine', 'ejs');
 
 
@@ -124,7 +101,7 @@ mqttServe.attachHttpServer(httpServer);
 
 
 //begin listening
-httpServer.listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+httpServer.listen(app.get('port'), appEnv.bind, function(){
+  console.log('Express server listening on ' + appEnv.url);
 });
 

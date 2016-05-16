@@ -1,1 +1,3 @@
 launchConfigurations/
+local-*
+/node_modules
