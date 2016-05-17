@@ -18,7 +18,7 @@ $(document).ready(function(){
         $('#stop').prop('disabled', true);
         
         $('#send').css("background-color","#D9534F");
-        $('#send').text("Disconnected...");
+        $('#send').text(i18n_bundle.data['_disconnected']);
     };
     
     var buttonsConnected = function(){
@@ -26,7 +26,7 @@ $(document).ready(function(){
         $('#start').prop('disabled', false);
         
         $('#send').css("background-color","#2BBEAA");
-        $('#send').text("Send a Message");
+        $('#send').text(i18n_bundle.data['#send']);
     };
     
     //not connected upon page load
@@ -78,7 +78,7 @@ $(document).ready(function(){
             message.qos = 0;
             client.send(message);
             messageCount++;
-            $('#messageCount').text(messageCount);
+            $('#messageCount').text(Number(messageCount).toLocaleString());
         }
     };
     
@@ -87,23 +87,11 @@ $(document).ready(function(){
         publish();
         $('#message').val("");
     });
-    
-    
+        
     //update messaging rate
     var updateRate = function(){
-        switch($('#rates').val()){
-            case 'Low':
-                delay = 100;
-                break;
-            case 'Medium':
-                delay = 10;
-                break;
-            case 'High':
-                delay = 1;
-                break;
-        }//parse low medium high
-        
-        $('#spamrate').text($('#rates').val().toLowerCase());
+        delay = $('#rates').val();
+        $('#spamrate').text($('#rates option:selected').text().toLowerCase());
     };
     //update messaging rate upon page load
     updateRate();
@@ -113,7 +101,7 @@ $(document).ready(function(){
     //update messaging duration
     var updateDuration = function(){
         duration = parseInt($('#times').val());
-        $('#duration').text(duration);
+        $('#duration').text(Number(duration).toLocaleString());
     };
     //update messaging duration upon page load
     updateDuration();

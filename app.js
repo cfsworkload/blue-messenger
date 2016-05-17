@@ -36,6 +36,7 @@ initDBConnection();
 // create a new express server
 var app = express();
 
+app.set('appEnv', appEnv); // save the appEnv for later use
 app.set('port', appEnv.port);
 app.set('view engine', 'ejs');
 
@@ -70,7 +71,9 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res) {
         res.sendfile(__dirname + '/public/index.html');
     });
-    
+
+app.use('/i18n', require('./i18n-router')(appEnv).router);
+
 // Create the MQTT server    
 var mqttServe = new mosca.Server({});
 
