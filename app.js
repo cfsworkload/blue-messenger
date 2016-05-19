@@ -24,7 +24,8 @@ function initDBConnection() {
 	
 	//check if DB exists if not create
 	cloudant.db.create(dbCredentials.dbName, function (err, res) {
-		if (err) { console.log('could not create db ', err); }
+		if (err && err.statusCode === 412) { return console.log('OK: db already existed', dbCredentials.dbName); }
+		if (err) { return console.log('could not create db ', err); }
     });
 	db = cloudant.use(dbCredentials.dbName);
 }
