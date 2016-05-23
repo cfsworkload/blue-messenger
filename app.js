@@ -81,8 +81,8 @@ mqttServe.on('clientConnected', function(client) {
 mqttServe.on('published', function(packet, client){
 
 	console.log('Message: ', packet.payload.toString("utf8"));
-	
-	fs.appendFile("../logs/mqtt.log", packet.topic + ": " + packet.payload.toString("utf8") + "\n", function(err) {
+	var logfile = appEnv.isLocal ? "mqtt.log" : "../logs/mqtt.log";
+	fs.appendFile(logfile, packet.topic + ": " + packet.payload.toString("utf8") + "\n", function(err) {
 	    if(err) {
 	        return console.log(err);
 	    }	
