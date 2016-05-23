@@ -1,29 +1,35 @@
 {
-	"name": "blue-messenger",
-	"version": "0.0.1",
-	"description": "A simple nodejs app for Bluemix",
-	"scripts": {
-		"start": "node app.js"
-	},
-	"dependencies": {
-		"express": "4.12.x",
-		"ejs": "*",
-		"morgan": "*",
-		"cfenv": "1.0.x",
-		"mosca": "0.30.x",
-        "ascoltatori": "0.21.0",
-        "fs": "*",
-        "cloudant": "*"
-	},
-	"repository": {
+  "name": "blue-messenger",
+  "version": "0.0.2",
+  "description": "A simple nodejs app for Bluemix",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "ascoltatori": "0.21.0",
+    "cfenv": "^1.0.3",
+    "cloudant": "*",
+    "ejs": "*",
+    "express": "4.12.x",
+    "fs": "*",
+    "morgan": "*",
+    "mosca": "0.30.x",
+    "optional": "^0.1.3"
+  },
+  "repository": {
     "type": "git",
     "url": "https://github.com/cfsworkload/blue-messenger.git"
   },
-	"author": "IBM Corp.",
-    "contributors": [
-        {
-          "name": "Anthony Kambalouris",
-          "email": "ank@us.ibm.com"
-        }
-    ]
+  "author": "IBM Corp.",
+  "contributors": [
+    {
+      "name": "Anthony Kambalouris",
+      "email": "ank@us.ibm.com"
+    },
+    {
+      "name": "Steven R. Loomis",
+      "email": "srloomis@us.ibm.com"
+    }
+  ],
+  "license": "Apache-2.0"
 }
