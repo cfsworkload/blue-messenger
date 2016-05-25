@@ -64,13 +64,15 @@ You have successfully deployed and bound an instance of Cloudant NoSQL DB to you
 application.
 
 At this point, we have our starter Node.js application with a binded instance of a Cloudant database.
-Using what you've learned, add the services **Monitoring and Analytics** and **Auto-Scaling** to your
+Using what you've learned, add the services **Monitoring and Analytics**, **Auto-Scaling** and **Globalization Pipeline** to your
 application.
 
-Once you have successfully bound "Monitoring and Analytics" and "Auto-Scaling" services to your web
+Once you have successfully bound "Monitoring and Analytics", "Auto-Scaling" and "Globalization Pipeline" services to your web
 application, your app's dashboard should appear like this:
 
 ![Example](images/dashboard-confirmation.jpg)
+
+- [ ] _todo: add Globalization Pipeline here_
 
 ## Fork Project to a Personal DevOps Space
 
@@ -227,3 +229,21 @@ information that your Build and Deploy pipeline will need.
 8. To demonstrate zero downtime deployment press the play button on the Build stage. This will build,
 deploy, and test your application. Spam the database within your Blue-Messenger application, while
 the deployment stage is running. You can monitor the deployment stage by clicking **View logs and history**. Once the pipeline has completed refresh your application in the browser and you will see the change to the buttons' edges. 
+
+## Experimenting with Globalization Pipeline
+
+1. Add languages besides English:
+	1. From your application's Dashboard select the **Globalization Pipeline** Service.
+	2. You should see a bundle named after your application, such as `blue-messenger-ac`
+	3. The English side has all of the source strings for your application. 
+	4. Choose "Add Language" and you can add a new target language for your application.
+	5. Restart the application to pick up the list of target languages.
+	6. Change your browser's preferred language and reload the page, you will see it in the new language.
+2. You can edit translations in the Dashboard and they will be reflected immediately.
+3. To edit the English (source) content:
+    1. Update `index.html` by changing some text such as a button title.
+		* To add content, make sure that it has class `t` such as `<span class="t">Hello World!</span>`
+		* If possible, add an `id=` attribute to disambiguate your strings: `<span id="hello_world" class="t">Hello World!</span>`
+		* To add strings not visible in `index.html`, add them to `public/scripts/en-extra.json`
+	2. run `npm run gen-i18n` to update the `en.json` file in the source code.
+	3. Push your updated code and restart the application. The `en.json` file will be uploaded to Globalization Pipeline automatically.

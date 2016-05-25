@@ -8,46 +8,24 @@ var express = require('express');
 var http = require('http');
 var mosca = require('mosca');
 var fs = require('fs');
-
+var optional = require('optional');
+var appEnv = require('cfenv').getAppEnv({vcap: optional('./local-vcap.json')});
 
 var db;
 var cloudant;
-var dbCredentials = {
-	dbName : 'my_sample_db'
-};
 
-//Get the port and host name from the environment variables
-var port = (process.env.VCAP_APP_PORT || 3000);
-var host = (process.env.VCAP_APP_HOST || '0.0.0.0');
+var dbCredentials = appEnv.services.cloudantNoSQLDB[0].credentials; // first instance with this label
+
+dbCredentials.dbName = 'my_sample_db';
 
 //setup cloudant db
 function initDBConnection() {
-	
-	if(process.env.VCAP_SERVICES) {
-		var vcapServices = JSON.parse(process.env.VCAP_SERVICES);
-		if(vcapServices.cloudantNoSQLDB) {
-			dbCredentials.host = vcapServices.cloudantNoSQLDB[0].credentials.host;
-			dbCredentials.port = vcapServices.cloudantNoSQLDB[0].credentials.port;
-			dbCredentials.user = vcapServices.cloudantNoSQLDB[0].credentials.username;
-			dbCredentials.password = vcapServices.cloudantNoSQLDB[0].credentials.password;
-			dbCredentials.url = vcapServices.cloudantNoSQLDB[0].credentials.url;
-		}
-		console.log('VCAP Services: '+JSON.stringify(process.env.VCAP_SERVICES));
-	}
-    else{
-            dbCredentials.host = "ffe37731-0505-4683-96a8-87d02a33e03e-bluemix.cloudant.com";
-			dbCredentials.port = 443;
-			dbCredentials.user = "ffe37731-0505-4683-96a8-87d02a33e03e-bluemix";
-			dbCredentials.password = "c7003d0b156d9c4ce856c4e6b4427f3b576c7ea6229235f0369ada1ed47b159c";
-			dbCredentials.url = "https://ffe37731-0505-4683-96a8-87d02a33e03e-bluemix:c7003d0b156d9c4ce856c4e6b4427f3b576c7ea6229235f0369ada1ed47b159c@ffe37731-0505-4683-96a8-87d02a33e03e-bluemix.cloudant.com";
-        
-    }
-
 	cloudant = require('cloudant')(dbCredentials.url);
 	
 	//check if DB exists if not create
 	cloudant.db.create(dbCredentials.dbName, function (err, res) {
-		if (err) { console.log('could not create db ', err); }
+		if (err && err.statusCode === 412) { return console.log('OK: db already existed', dbCredentials.dbName); }
+		if (err) { return console.log('could not create db ', err); }
     });
 	db = cloudant.use(dbCredentials.dbName);
 }
@@ -58,7 +36,8 @@ initDBConnection();
 // create a new express server
 var app = express();
 
-app.set('port', port);
+app.set('appEnv', appEnv); // save the appEnv for later use
+app.set('port', appEnv.port);
 app.set('view engine', 'ejs');
 
 
@@ -92,7 +71,9 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res) {
         res.sendfile(__dirname + '/public/index.html');
     });
-    
+
+app.use('/i18n', require('./i18n-router')(appEnv).router);
+
 // Create the MQTT server    
 var mqttServe = new mosca.Server({});
 
@@ -103,8 +84,8 @@ mqttServe.on('clientConnected', function(client) {
 mqttServe.on('published', function(packet, client){
 
 	console.log('Message: ', packet.payload.toString("utf8"));
-	
-	fs.appendFile("../logs/mqtt.log", packet.topic + ": " + packet.payload.toString("utf8") + "\n", function(err) {
+	var logfile = appEnv.isLocal ? "mqtt.log" : "../logs/mqtt.log";
+	fs.appendFile(logfile, packet.topic + ": " + packet.payload.toString("utf8") + "\n", function(err) {
 	    if(err) {
 	        return console.log(err);
 	    }	
@@ -124,7 +105,7 @@ mqttServe.attachHttpServer(httpServer);
 
 
 //begin listening
-httpServer.listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+httpServer.listen(app.get('port'), appEnv.bind, function(){
+  console.log('Express server listening on ' + appEnv.url);
 });
 
